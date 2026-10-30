@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/fig-tokens.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/typography.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/styles.css">
+<script src="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/_ds_bundle.js"></script>
+<style>@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Regular.ttf") format("truetype");font-weight:400;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Medium.ttf") format("truetype");font-weight:500;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Semibold.ttf") format("truetype");font-weight:600;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Bold.ttf") format("truetype");font-weight:700;font-display:swap}</style>
+</helmet>
+<div class="{{ theme }}" style="--zh-primary: {{ pal.primary }};--zh-primary-label: {{ pal.label }};--zh-system-bg: {{ pal.systemBg }};--zh-card: {{ pal.card }};--zh-bar: {{ pal.bar }};--zh-glass-hi: {{ pal.glassHi }};--zh-glass-edge: {{ pal.glassEdge }};position:relative;width:100%;height:100%;overflow:hidden;background:var(--zh-system-bg);font-family:'Zoho Puvi','SF Pro',-apple-system,system-ui,sans-serif;display:flex;flex-direction:column">
+  <sc-if value="{{ isPhone }}" hint-placeholder-val="{{ true }}">
+    <x-import component-from-global-scope="ZhareHubDesignSystem_d00ac0.StatusBarIPhone2" hint-size="402px,62px"></x-import>
+    <div style="height:54px;flex-shrink:0;padding:0 16px;display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:10px">
+      <div onClick="{{ back }}" aria-label="Back" style="width:44px;height:44px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(0.94)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="var(--labels-primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;transition:opacity 0.25s, transform 0.3s cubic-bezier(0.2,0.8,0.2,1);opacity:{{ titleOpacity }};transform:{{ navTf }}">
+        <span title="{{ name }}" style="width:32px;height:32px;flex-shrink:0;border-radius:8px;background:{{ logoBg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff">{{ initials }}</span>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;transition:opacity 0.25s, transform 0.3s cubic-bezier(0.2,0.8,0.2,1);opacity:{{ titleOpacity }};transform:{{ navTf }};pointer-events:{{ navPe }}">
+        <div onClick="{{ install }}" style="height:44px;padding:0 16px;border-radius:100px;background:{{ instBg }};backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:{{ instSh }};display:flex;align-items:center;gap:6px;cursor:{{ instCur }}" style-active="transform:scale(0.95)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 4v11" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M7.5 10.5L12 15l4.5-4.5" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 19h14" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+          <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px;color:{{ instInk }};white-space:nowrap">{{ installShort }}</span>
+        </div>
+        <sc-if value="{{ canShare }}" hint-placeholder-val="{{ true }}">
+          <div onClick="{{ share }}" aria-label="Share" style="width:44px;height:44px;flex-shrink:0;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:{{ shrCur }}" style-active="transform:scale(0.94)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 3v12" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M8 7l4-4 4 4" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isPad }}" hint-placeholder-val="{{ false }}">
+    <div style="height:32px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;font-family:'SF Pro',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--labels-primary)">
+      <div style="display:flex;gap:8px"><span>9:41</span><span>Mon Jun 10</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span>100%</span><span style="width:25px;height:12px;border-radius:4px;border:1px solid var(--labels-tertiary);padding:1.5px;box-sizing:border-box;display:flex"><span style="flex:1;border-radius:2px;background:var(--labels-primary)"></span></span></div>
+    </div>
+    <div style="height:64px;flex-shrink:0;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px">
+      <div style="display:flex">
+        <div onClick="{{ back }}" style="height:44px;padding:0 18px 0 12px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;gap:6px;cursor:pointer" style-active="transform:scale(0.96)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="var(--labels-primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--labels-primary)">Applications</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;transition:opacity 0.25s, transform 0.3s cubic-bezier(0.2,0.8,0.2,1);opacity:{{ titleOpacity }};transform:{{ navTf }}">
+        <span title="{{ name }}" style="width:32px;height:32px;flex-shrink:0;border-radius:8px;background:{{ logoBg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff">{{ initials }}</span>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;transition:opacity 0.25s, transform 0.3s cubic-bezier(0.2,0.8,0.2,1);opacity:{{ titleOpacity }};transform:{{ navTf }};pointer-events:{{ navPe }}">
+        <div onClick="{{ install }}" style="height:44px;padding:0 16px;border-radius:100px;background:{{ instBg }};backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:{{ instSh }};display:flex;align-items:center;gap:6px;cursor:{{ instCur }}" style-active="transform:scale(0.95)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 4v11" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M7.5 10.5L12 15l4.5-4.5" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 19h14" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+          <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px;color:{{ instInk }};white-space:nowrap">{{ installShort }}</span>
+        </div>
+        <sc-if value="{{ canShare }}" hint-placeholder-val="{{ true }}">
+          <div onClick="{{ share }}" aria-label="Share" style="width:44px;height:44px;flex-shrink:0;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:{{ shrCur }}" style-active="transform:scale(0.94)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 3v12" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M8 7l4-4 4 4" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+  <div onScroll="{{ onScroll }}" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;box-sizing:border-box;padding:{{ bodyPad }}">
+    <div style="display:flex;flex-direction:{{ outerDir }};gap:24px;align-items:stretch;max-width:1100px;margin:0 auto">
+      <div style="display:{{ colDisplay }};flex-direction:column;gap:24px;width:{{ leftW }};flex-shrink:0">
+        <div style="order:1;width:100%;box-sizing:border-box;background:var(--zh-card);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="width:84px;height:84px;flex-shrink:0;border-radius:19px;background:{{ logoBg }};display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#fff;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,0.08)">{{ initials }}</div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <div style="font-size:22px;font-weight:700;line-height:28px;letter-spacing:-0.26px;color:var(--labels-primary)">{{ name }}</div>
+              <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">{{ versionText }}</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">
+                <sc-if value="{{ icoIosF }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(7.375 4.46) scale(1.7)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" fill="currentColor"></path></svg></sc-if>
+                <sc-if value="{{ icoAndF }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><path fill-rule="evenodd" d="M10.1 12.4A7.95 7.95 0 0 1 26 12.4Z M15 8.2a1.1 1.1 0 1 0 0.01 0Z M21.1 8.2a1.1 1.1 0 1 0 0.01 0Z" fill="currentColor"></path><path d="M10.1 13.6H26V25.4a1.2 1.2 0 0 1-1.2 1.2H11.3a1.2 1.2 0 0 1-1.2-1.2Z" fill="currentColor"></path><rect x="13" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="19.3" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="5.2" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><rect x="27.1" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><path d="M13.6 5L12.4 3.3M22.5 5L23.7 3.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ icoMacF }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><defs><clipPath id="zhFinderClip"><rect x="2.5" y="5.5" width="31" height="25.5" rx="9"></rect></clipPath><linearGradient id="zhFinderL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46B9FF"></stop><stop offset="1" stop-color="#1673F0"></stop></linearGradient><linearGradient id="zhFinderR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2F9FF"></stop><stop offset="1" stop-color="#CFE8FF"></stop></linearGradient></defs><g clip-path="url(#zhFinderClip)"><rect x="2.5" y="5.5" width="31" height="25.5" fill="url(#zhFinderR)"></rect><path d="M2 5H21.7L13.98 16.25C13.78 16.55 13.99 16.96 14.36 16.96H18.3C18.55 16.96 18.75 17.16 18.75 17.41V31.5H2Z" fill="url(#zhFinderL)"></path></g><path d="M25.3667 23C19.7838 25.4185 16.5587 25.3636 10.6035 23" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M25.3672 11.9997V15.355" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path><path d="M10.6035 12.258V15.6132" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ icoIosS }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(8 5.25) scale(1.6)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path></svg></sc-if><sc-if value="{{ icoAndS }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11.2 13A6.8 6.8 0 0 1 24.8 13Z"></path><path d="M11.2 16.2H24.8V24.2a1.6 1.6 0 0 1-1.6 1.6H12.8a1.6 1.6 0 0 1-1.6-1.6Z"></path><path d="M15.2 26V31M20.8 26V31M7 16.4V23.4M29 16.4V23.4M14 7.5L12.6 5.2M22 7.5L23.4 5.2"></path></g><circle cx="15.4" cy="10.6" r="1.1" fill="currentColor"></circle><circle cx="20.6" cy="10.6" r="1.1" fill="currentColor"></circle></svg></sc-if><sc-if value="{{ icoMacS }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6.5" width="28" height="23.5" rx="7.5"></rect><path d="M20.8 6.5L14.5 15.8C14.2 16.3 14.5 16.9 15 16.9H18.2C18.5 16.9 18.8 17.2 18.8 17.5V30"></path><path d="M25.4 23C19.8 25.4 16.6 25.4 10.6 23"></path><path d="M25.4 12V15.4M10.6 12V15.4"></path></g></svg></sc-if>
+                <span>{{ platform }}</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(118,118,128,0.08)">
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--labels-secondary)">Created</span><span style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--labels-primary)">{{ date }}</span></div>
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--labels-secondary)">Size</span><span style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--labels-primary)">{{ size }}</span></div>
+          </div>
+          <sc-if value="{{ isExpired }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:12px;background:color-mix(in srgb, var(--accents-red) 12%, transparent)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="9" stroke="var(--accents-red)" stroke-width="2"></circle><path d="M12 7.5v5.5" stroke="var(--accents-red)" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="16.5" r="1.2" fill="var(--accents-red)"></circle></svg>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                <span style="font-size:15px;font-weight:600;line-height:20px;letter-spacing:-0.24px;color:var(--labels-primary)">Provisioning profile expired</span>
+                <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);text-wrap:pretty">Expired on {{ expiresOn }}. This build can't be installed or shared.</span>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isSharedApp }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:8px;margin-top:-4px">
+              <span style="width:24px;height:24px;flex-shrink:0;border-radius:100px;background:{{ sharerBg }};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">{{ sharerInitials }}</span>
+              <span style="font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">Shared by <span style="font-weight:600;color:var(--labels-primary)">{{ sharedBy }}</span></span>
+            </div>
+          </sc-if>
+        </div>
+        <div style="order:2;width:100%;display:grid;grid-template-columns:{{ actCols }};gap:12px">
+          <div onClick="{{ install }}" style="height:54px;border-radius:100px;background:{{ instBg }};backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:{{ instSh }};display:flex;align-items:center;justify-content:center;gap:8px;cursor:{{ instCur }}" style-active="opacity:0.85;transform:scale(0.98)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 4v11" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M7.5 10.5L12 15l4.5-4.5" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 19h14" stroke="{{ instInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+            <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:{{ instInk }}">{{ installLabel }}</span>
+          </div>
+          <sc-if value="{{ canShare }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ share }}" style="height:54px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;gap:8px;cursor:{{ shrCur }}" style-active="opacity:0.7;transform:scale(0.98)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 3v12" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M8 7l4-4 4 4" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2" stroke="{{ shrInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+              <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:{{ shrInk }}">Share</span>
+            </div>
+          </sc-if>
+        </div>
+        <div style="order:3;width:100%;display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary);padding:0 4px">What's new</div>
+          <div style="background:var(--zh-card);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:15px;line-height:22px;letter-spacing:-0.24px;color:var(--labels-primary);text-wrap:pretty">{{ notes }}</div>
+          </div>
+        </div>
+        <sc-if value="{{ showShare }}" hint-placeholder-val="{{ true }}">
+          <div style="order:4;width:100%;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px">
+              <div style="font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary)">Shared with</div>
+              <div style="display:flex;align-items:baseline;gap:12px">
+                <div style="font-size:15px;letter-spacing:-0.24px;color:var(--labels-secondary)">{{ memberCount }}</div>
+                <sc-if value="{{ canRevokeAll }}" hint-placeholder-val="{{ true }}">
+                  <div onClick="{{ askRevokeAll }}" style="font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--accents-red);cursor:pointer" style-active="opacity:0.6">Revoke All</div>
+                </sc-if>
+              </div>
+            </div>
+            <div style="background:var(--zh-card);border-radius:22px;overflow:hidden">
+              <sc-for list="{{ firstFive }}" as="m" hint-placeholder-count="5">
+                <div style="padding-left:16px">
+                  <div style="padding:10px 16px 10px 0;border-top:{{ m.border }};display:flex;align-items:center;gap:12px">
+                    <span style="width:36px;height:36px;flex-shrink:0;border-radius:100px;background:{{ m.bg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff">{{ m.initials }}</span>
+                    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+                      <span style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary)">{{ m.name }}</span>
+                      <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.email }}</span>
+                    </div>
+                    <div onClick="{{ m.revoke }}" style="height:32px;padding:0 12px;flex-shrink:0;border-radius:100px;background:rgba(255,56,60,0.12);display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--accents-red);cursor:pointer;transition:background 0.15s" style-hover="background:rgba(255,56,60,0.2)" style-active="opacity:0.6"><span>Revoke</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <sc-if value="{{ noMembers }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:16px;font-size:15px;letter-spacing:-0.24px;color:var(--labels-secondary)">Not shared with anyone yet.</div>
+              </sc-if>
+              <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-left:16px">
+                  <div onClick="{{ openSheet }}" style="height:48px;padding-right:16px;border-top:0.5px solid var(--separators-non-opaque);display:flex;align-items:center;justify-content:space-between;cursor:pointer" style-active="opacity:0.6">
+                    <span style="font-size:17px;font-weight:500;letter-spacing:-0.41px;color:var(--zh-primary-label)">Show All</span>
+                    <span style="display:flex;align-items:center;gap:6px;font-size:15px;color:var(--labels-secondary)">{{ moreText }}<svg width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M2 2l6 6-6 6" stroke="var(--labels-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+        <div style="order:8;width:100%;padding-top:4px">
+          <div onClick="{{ askDelete }}" style="height:54px;border-radius:100px;background:var(--zh-card);box-shadow:0 8px 40px rgba(0,0,0,0.06),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="opacity:0.7;transform:scale(0.98)">
+            <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--accents-red)">Delete Application</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:{{ colDisplay }};flex-direction:column;gap:24px;flex:1;min-width:0">
+        <div style="order:5;width:100%;display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary);padding:0 4px">App Information</div>
+          <div style="background:var(--zh-card);border-radius:22px;overflow:hidden">
+            <sc-for list="{{ infoRows }}" as="r" hint-placeholder-count="8">
+              <div style="padding-left:16px">
+                <div style="padding:12px 16px 12px 0;border-top:{{ r.border }};display:flex;flex-direction:{{ r.dir }};justify-content:space-between;gap:{{ r.gap }}">
+                  <span style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);flex-shrink:0">{{ r.label }}</span>
+                  <sc-if value="{{ r.isText }}" hint-placeholder-val="{{ true }}"><span style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-primary);text-align:{{ r.align }};white-space:pre-line;word-break:break-word;min-width:0">{{ r.value }}</span></sc-if>
+                  <sc-if value="{{ r.isChips }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-wrap:wrap;gap:6px">
+                      <sc-for list="{{ r.chips }}" as="c" hint-placeholder-count="4"><span style="padding:4px 10px;border-radius:100px;background:rgba(118,118,128,0.12);font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-primary)">{{ c.t }}</span></sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ isApple }}" hint-placeholder-val="{{ true }}">
+          <div style="order:6;width:100%;display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary);padding:0 4px">Provisioning Information</div>
+            <div style="background:var(--zh-card);border-radius:22px;overflow:hidden">
+              <sc-for list="{{ provRows }}" as="r" hint-placeholder-count="5">
+                <div style="padding-left:16px">
+                  <div style="padding:12px 16px 12px 0;border-top:{{ r.border }};display:flex;justify-content:space-between;gap:16px">
+                    <span style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);flex-shrink:0">{{ r.label }}</span>
+                    <span style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:{{ r.color }};text-align:right;min-width:0;word-break:break-word">{{ r.value }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="order:7;width:100%;display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary);padding:0 4px">App Privacy</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+              <sc-for list="{{ privacy }}" as="p" hint-placeholder-count="2">
+                <div style="background:var(--zh-card);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;gap:12px;align-items:center">
+                    <span style="width:40px;height:40px;flex-shrink:0;border-radius:100px;background:{{ p.tint }};display:flex;align-items:center;justify-content:center;color:{{ p.ink }}">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="2"></circle><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M4 4l16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="opacity:{{ p.slash }}"></path></svg>
+                    </span>
+                    <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                      <span style="font-size:17px;font-weight:600;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary)">{{ p.title }}</span>
+                      <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary)">{{ p.sub }}</span>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px">
+                    <sc-for list="{{ p.items }}" as="c" hint-placeholder-count="3"><span style="padding:6px 12px 6px 10px;border-radius:100px;background:rgba(118,118,128,0.12);display:flex;align-items:center;gap:6px;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-primary)"><span style="width:16px;height:16px;flex-shrink:0;background:var(--labels-primary);-webkit-mask:url({{ c.ic }}) center/contain no-repeat;mask:url({{ c.ic }}) center/contain no-repeat"></span><span>{{ c.t }}</span></span></sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;pointer-events:none;z-index:6">
+    <x-import component-from-global-scope="ZhareHubDesignSystem_d00ac0.HomeIndicator" device="{{ hiDevice }}" orientation="{{ hiOrientation }}" hint-size="400px,34px"></x-import>
+  </div>
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;z-index:70;background:rgba(0,0,0,0.25);display:flex;justify-content:center;align-items:{{ sheetAlign }}">
+      <div onClick="{{ stop }}" style="width:{{ sheetW }};height:{{ sheetH }};border-radius:{{ sheetR }};background:var(--zh-system-bg);box-shadow:0 15px 75px rgba(0,0,0,0.18);display:flex;flex-direction:column;overflow:hidden">
+        <div style="display:flex;justify-content:center;padding-top:6px"><span style="width:36px;height:5px;border-radius:100px;background:var(--labels-tertiary)"></span></div>
+        <div style="padding:8px 16px 12px;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px">
+          <div></div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--labels-primary)">Shared with</span>
+            <span style="font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">{{ memberCount }}</span>
+          </div>
+          <div onClick="{{ closeSheet }}" aria-label="Done" style="width:44px;height:44px;border-radius:100px;background:color-mix(in srgb, var(--zh-primary) 95%, transparent);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(0.94)">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 4.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+        </div>
+        <div style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:4px 16px 40px">
+          <div style="background:var(--zh-card);border-radius:22px;overflow:hidden">
+            <sc-for list="{{ allMembers }}" as="m" hint-placeholder-count="8">
+              <div style="padding-left:16px">
+                <div style="padding:10px 16px 10px 0;border-top:{{ m.border }};display:flex;align-items:center;gap:12px">
+                  <span style="width:36px;height:36px;flex-shrink:0;border-radius:100px;background:{{ m.bg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff">{{ m.initials }}</span>
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+                    <span style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary)">{{ m.name }}</span>
+                    <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.email }}</span>
+                  </div>
+                  <div onClick="{{ m.revoke }}" style="height:32px;padding:0 12px;flex-shrink:0;border-radius:100px;background:rgba(255,56,60,0.12);display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--accents-red);cursor:pointer;transition:background 0.15s" style-hover="background:rgba(255,56,60,0.2)" style-active="opacity:0.6"><span>Revoke</span></div>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noMembers }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:16px;font-size:15px;letter-spacing:-0.24px;color:var(--labels-secondary)">Not shared with anyone yet.</div>
+            </sc-if>
+          </div>
+          <sc-if value="{{ canRevokeAll }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ askRevokeAll }}" style="margin-top:20px;height:48px;border-radius:22px;background:var(--zh-card);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;letter-spacing:-0.41px;color:var(--accents-red);cursor:pointer" style-active="opacity:0.6">Revoke All</div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeShare }}" style="position:absolute;inset:0;z-index:72;background:rgba(0,0,0,0.25);display:flex;justify-content:center;align-items:{{ sheetAlign }}">
+      <div onClick="{{ stop }}" style="width:{{ sheetW }};height:{{ shareH }};border-radius:{{ sheetR }};background:var(--zh-system-bg);box-shadow:0 15px 75px rgba(0,0,0,0.18);display:flex;flex-direction:column;overflow:hidden;position:relative">
+        <div style="display:flex;justify-content:center;padding-top:6px"><span style="width:36px;height:5px;border-radius:100px;background:var(--labels-tertiary)"></span></div>
+        <div style="padding:8px 16px 10px;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px">
+          <div></div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--labels-primary)">Share Application</span>
+            <span style="font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">{{ teamName }}</span>
+          </div>
+          <div onClick="{{ closeShare }}" aria-label="Close" style="width:44px;height:44px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(0.94)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="var(--labels-primary)" stroke-width="2" stroke-linecap="round"></path></svg>
+          </div>
+        </div>
+        <div style="padding:0 16px;display:flex;flex-direction:column;gap:12px">
+          <div style="background:var(--zh-card);border-radius:22px;padding:14px;display:flex;align-items:flex-start;gap:14px">
+            <div style="width:60px;height:60px;flex-shrink:0;border-radius:14px;background:{{ logoBg }};display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:700;color:#fff;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,0.08)">{{ initials }}</div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+              <span style="font-size:17px;font-weight:600;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ name }}</span>
+              <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary)">Version {{ ver }} ({{ code }})</span>
+            </div>
+            <div title="{{ platform }}" aria-label="{{ platform }}" style="flex-shrink:0;align-self:flex-start;color:var(--labels-secondary)"><sc-if value="{{ icoIosF }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(7.375 4.46) scale(1.7)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" fill="currentColor"></path></svg></sc-if><sc-if value="{{ icoAndF }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><path fill-rule="evenodd" d="M10.1 12.4A7.95 7.95 0 0 1 26 12.4Z M15 8.2a1.1 1.1 0 1 0 0.01 0Z M21.1 8.2a1.1 1.1 0 1 0 0.01 0Z" fill="currentColor"></path><path d="M10.1 13.6H26V25.4a1.2 1.2 0 0 1-1.2 1.2H11.3a1.2 1.2 0 0 1-1.2-1.2Z" fill="currentColor"></path><rect x="13" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="19.3" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="5.2" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><rect x="27.1" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><path d="M13.6 5L12.4 3.3M22.5 5L23.7 3.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ icoMacF }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><defs><clipPath id="zhFinderClip"><rect x="2.5" y="5.5" width="31" height="25.5" rx="9"></rect></clipPath><linearGradient id="zhFinderL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46B9FF"></stop><stop offset="1" stop-color="#1673F0"></stop></linearGradient><linearGradient id="zhFinderR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2F9FF"></stop><stop offset="1" stop-color="#CFE8FF"></stop></linearGradient></defs><g clip-path="url(#zhFinderClip)"><rect x="2.5" y="5.5" width="31" height="25.5" fill="url(#zhFinderR)"></rect><path d="M2 5H21.7L13.98 16.25C13.78 16.55 13.99 16.96 14.36 16.96H18.3C18.55 16.96 18.75 17.16 18.75 17.41V31.5H2Z" fill="url(#zhFinderL)"></path></g><path d="M25.3667 23C19.7838 25.4185 16.5587 25.3636 10.6035 23" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M25.3672 11.9997V15.355" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path><path d="M10.6035 12.258V15.6132" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ icoIosS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(8 5.25) scale(1.6)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path></svg></sc-if><sc-if value="{{ icoAndS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11.2 13A6.8 6.8 0 0 1 24.8 13Z"></path><path d="M11.2 16.2H24.8V24.2a1.6 1.6 0 0 1-1.6 1.6H12.8a1.6 1.6 0 0 1-1.6-1.6Z"></path><path d="M15.2 26V31M20.8 26V31M7 16.4V23.4M29 16.4V23.4M14 7.5L12.6 5.2M22 7.5L23.4 5.2"></path></g><circle cx="15.4" cy="10.6" r="1.1" fill="currentColor"></circle><circle cx="20.6" cy="10.6" r="1.1" fill="currentColor"></circle></svg></sc-if><sc-if value="{{ icoMacS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6.5" width="28" height="23.5" rx="7.5"></rect><path d="M20.8 6.5L14.5 15.8C14.2 16.3 14.5 16.9 15 16.9H18.2C18.5 16.9 18.8 17.2 18.8 17.5V30"></path><path d="M25.4 23C19.8 25.4 16.6 25.4 10.6 23"></path><path d="M25.4 12V15.4M10.6 12V15.4"></path></g></svg></sc-if></div>
+          </div>
+          <div style="height:44px;border-radius:100px;background:var(--zh-card);box-shadow:inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;gap:8px;padding:0 6px 0 14px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="10.5" cy="10.5" r="6.5" stroke="var(--labels-secondary)" stroke-width="2.2"></circle><path d="M15.5 15.5L20 20" stroke="var(--labels-secondary)" stroke-width="2.2" stroke-linecap="round"></path></svg>
+            <input value="{{ q }}" onChange="{{ onQ }}" placeholder="Search members" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:17px;letter-spacing:-0.41px;color:var(--labels-primary)">
+            <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+              <div onClick="{{ clearQ }}" aria-label="Clear" style="width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:100px;background:var(--labels-tertiary);display:flex;align-items:center;justify-content:center"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 1l6 6M7 1L1 7" stroke="var(--zh-card)" stroke-width="1.6" stroke-linecap="round"></path></svg></span>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:14px 16px 120px">
+          <div style="padding:0 4px 8px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font-size:13px;font-weight:600;letter-spacing:-0.08px;color:var(--labels-secondary)">TEAM MEMBERS</span>
+            <span style="display:flex;gap:12px;align-items:baseline"><span style="font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">{{ teamCountText }}</span><sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}"><span onClick="{{ clearSel }}" style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--zh-primary-label);cursor:pointer" style-active="opacity:0.6">Clear</span></sc-if></span>
+          </div>
+          <div style="background:var(--zh-card);border-radius:22px;overflow:hidden">
+            <sc-for list="{{ teamList }}" as="m" hint-placeholder-count="8">
+              <div onClick="{{ m.toggle }}" style="padding-left:16px;cursor:{{ m.cursor }}" style-active="background:rgba(118,118,128,0.08)">
+                <div style="padding:10px 16px 10px 0;border-top:{{ m.border }};display:flex;align-items:center;gap:12px;opacity:{{ m.op }}">
+                  <span style="width:36px;height:36px;flex-shrink:0;border-radius:100px;background:{{ m.bg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff">{{ m.initials }}</span>
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+                    <span style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary)">{{ m.name }}</span>
+                    <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.email }}</span>
+                  </div>
+                  <sc-if value="{{ m.shared }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">Already shared</span>
+                  </sc-if>
+                  <sc-if value="{{ m.open }}" hint-placeholder-val="{{ true }}">
+                    <span style="width:24px;height:24px;flex-shrink:0;box-sizing:border-box;border-radius:100px;border:{{ m.ring }};background:{{ m.fill }};display:flex;align-items:center;justify-content:center;transition:background 0.15s">
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="opacity:{{ m.checkOp }}"><path d="M3 8.5l3.2 3L13 4.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </span>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:24px 16px;text-align:center;font-size:15px;letter-spacing:-0.24px;color:var(--labels-secondary)">No members match “{{ q }}”.</div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:12px 16px {{ shareBtmPad }};background:color-mix(in srgb, var(--zh-system-bg) 82%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+          <div onClick="{{ doShare }}" style="height:54px;border-radius:100px;background:{{ shareBtnBg }};box-shadow:{{ shareBtnSh }};display:flex;align-items:center;justify-content:center;gap:8px;cursor:{{ shareCursor }}" style-active="opacity:0.85;transform:scale(0.98)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 3v12" stroke="{{ shareInk }}" stroke-width="2" stroke-linecap="round"></path><path d="M8 7l4-4 4 4" stroke="{{ shareInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2" stroke="{{ shareInk }}" stroke-width="2" stroke-linecap="round"></path></svg>
+            <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:{{ shareInk }}">{{ shareLabel }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;bottom:56px;z-index:75;display:flex;justify-content:center;pointer-events:none">
+      <div style="height:44px;padding:0 18px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.16),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;gap:8px">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 4.5" stroke="var(--zh-primary-label)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--labels-primary)">{{ toast }}</span>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ confirming }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cancelDelete }}" style="position:absolute;inset:0;z-index:80;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0 46px">
+      <div onClick="{{ stop }}" style="width:100%;max-width:300px;border-radius:34px;padding:22px 16px 16px;box-sizing:border-box;background:color-mix(in srgb, var(--backgrounds-primary) 88%, transparent);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:18px;font-family:'SF Pro',-apple-system,system-ui,sans-serif">
+        <div style="display:flex;flex-direction:column;gap:6px;text-align:center;padding:0 8px">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--labels-primary)">Delete “{{ name }}”?</div>
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">This can’t be undone.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px">
+          <div onClick="{{ cancelDelete }}" style="height:48px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;color:var(--labels-primary);cursor:pointer" style-active="opacity:0.7">Cancel</div>
+          <div onClick="{{ confirmDelete }}" style="height:48px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:var(--accents-red);cursor:pointer" style-active="opacity:0.7">Delete</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ revokingAll }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cancelRevokeAll }}" style="position:absolute;inset:0;z-index:80;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0 46px">
+      <div onClick="{{ stop }}" style="width:100%;max-width:300px;border-radius:34px;padding:22px 16px 16px;box-sizing:border-box;background:color-mix(in srgb, var(--backgrounds-primary) 88%, transparent);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:18px;font-family:'SF Pro',-apple-system,system-ui,sans-serif">
+        <div style="display:flex;flex-direction:column;gap:6px;text-align:center;padding:0 8px">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--labels-primary)">Revoke access for all?</div>
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);text-wrap:pretty">{{ memberCount }} will no longer be able to install “{{ name }}”.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px">
+          <div onClick="{{ cancelRevokeAll }}" style="height:48px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;color:var(--labels-primary);cursor:pointer" style-active="opacity:0.7">Cancel</div>
+          <div onClick="{{ confirmRevokeAll }}" style="height:48px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:var(--accents-red);cursor:pointer" style-active="opacity:0.7">Revoke All</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:874},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;iPhone&quot;,&quot;iPad&quot;],&quot;default&quot;:&quot;iPhone&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;appearance&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Light&quot;,&quot;Dark&quot;],&quot;default&quot;:&quot;Light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;platform&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;iOS&quot;,&quot;Android&quot;,&quot;macOS&quot;],&quot;default&quot;:&quot;iOS&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;startShare&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;team&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Zylker Mobile&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;app&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;},&quot;onBack&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onDelete&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(name: string) =&gt; void&quot;},&quot;logoStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Filled&quot;,&quot;Stroke&quot;],&quot;default&quot;:&quot;Filled&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;expired&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const MEMBERS = [
+  ['Priya Sharma', 'priya.sharma@zylker.com', 'orange'],
+  ['Daniel Ortiz', 'daniel.ortiz@zylker.com', 'green'],
+  ['Mei Chen', 'mei.chen@zylker.com', 'purple'],
+  ['Arjun Rao', 'arjun.rao@zylker.com', 'teal'],
+  ['Sofia Rossi', 'sofia.rossi@zylker.com', 'pink'],
+  ['Kenji Watanabe', 'kenji.watanabe@zylker.com', 'indigo'],
+  ['Fatima Khan', 'fatima.khan@zylker.com', 'red'],
+  ['Lucas Martin', 'lucas.martin@zylker.com', 'blue'],
+].map(([name, email, c]) => ({ name, email, c }));
+const TEAM = [
+  ...MEMBERS,
+  ...[
+    ['Aisha Patel', 'aisha.patel@zylker.com', 'mint'],
+    ['Ben Carter', 'ben.carter@zylker.com', 'cyan'],
+    ['Chloe Dubois', 'chloe.dubois@zylker.com', 'purple'],
+    ['Diego Alvarez', 'diego.alvarez@zylker.com', 'orange'],
+    ['Hana Kim', 'hana.kim@zylker.com', 'pink'],
+    ['Isaac Mensah', 'isaac.mensah@zylker.com', 'green'],
+    ['Lena Fischer', 'lena.fischer@zylker.com', 'indigo'],
+    ['Omar Haddad', 'omar.haddad@zylker.com', 'brown'],
+    ['Ravi Iyer', 'ravi.iyer@zylker.com', 'teal'],
+    ['Yuki Sato', 'yuki.sato@zylker.com', 'red'],
+  ].map(([name, email, c]) => ({ name, email, c })),
+].sort((a, b) => a.name.localeCompare(b.name));
+const SEP = '0.5px solid var(--separators-non-opaque)';
+const ini = n => (n || '').split(' ').map(w => w[0]).join('').slice(0, 2);
+const DEFAULT = { name: 'Zylker Field', ver: '3.2.0', code: '320', date: 'Oct 19, 2026', size: '48.6 MB', c: 'blue', shared: false, notes: 'Offline sync for field reports, faster photo uploads, and a redesigned checklist with drag-to-reorder. Fixes a crash when attaching large videos and improves sign-in reliability on slow networks.' };
+class Component extends DCLogic {
+  state = { members: MEMBERS, sheet: false, confirm: false, scrolled: false, install: 'idle', share: !!this.props.startShare, sel: this.props.startShare ? ['aisha.patel@zylker.com', 'hana.kim@zylker.com'] : [], q: '', toast: '' };
+  componentWillUnmount() { clearTimeout(this.it); clearTimeout(this.tt); }
+  renderVals() {
+    const dark = this.props.appearance === 'Dark';
+    const pad = this.props.device === 'iPad';
+    const src = this.props.app || { ...DEFAULT, android: this.props.platform === 'Android' };
+    const android = !!src.android; const isMac = !android && (src.mac || (!this.props.app && this.props.platform === 'macOS'));
+    const slug = src.name.toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const row = (label, value, i, opts = {}) => {
+      const stacked = opts.stacked || (typeof value === 'string' && value.length > 30);
+      return { label, value, border: i ? SEP : 'none', dir: stacked || opts.chips ? 'column' : 'row', gap: stacked || opts.chips ? '6px' : '16px', align: stacked ? 'left' : 'right', isText: !opts.chips, isChips: !!opts.chips, chips: (opts.chips || []).map(t => ({ t })) };
+    };
+    const info = android ? [
+      ['Bundle Name', src.name], ['Bundle Identifier', 'com.zylker.' + slug], ['Version', src.ver], ['Version Code', src.code],
+      ['Supported Platform', 'Android 8.0 (API 26) or later'], ['Device Family', 'Phone, Tablet'],
+      ['Signer Information', 'CN=Zylker Corporation, O=Zylker, L=Chennai, C=IN\nSHA-256: 4F:2A:9B:1C:7E:D3:60:85:AA:12:CF:3B:94:E0:5D:71', { stacked: true }],
+      ['User Permission', null, { chips: ['Camera', 'Fine location', 'Internet', 'Post notifications', 'Read media images', 'Record audio'] }],
+      ['Languages', 'English, French, German, Hindi, Japanese, Spanish'],
+    ] : [
+      ['Bundle Name', src.name], ['Bundle Identifier', 'com.zylker.' + slug], ['Version', src.ver], ['Version Code', src.code],
+      ['Supported Platform', isMac ? 'macOS 14.0 or later' : 'iOS 17.0 or later'], ['Device Family', isMac ? 'Mac' : 'iPhone, iPad'], ['Category', 'Business'],
+      ['Languages', 'English, French, German, Hindi, Japanese, Spanish'],
+    ];
+    const expired = !!src.expired || (!this.props.app && !!this.props.expired);
+    const expiresOn = expired ? 'Oct 2, 2026' : 'Oct 2, 2027';
+    const prov = [
+      ['Name', src.name + ' Ad Hoc'], ['Team Name', 'Zylker Corporation'], ['Team Identifier', '8Z4K2LQ9XP'],
+      ['Created On', expired ? 'Oct 2, 2025' : 'Oct 2, 2026'], ['Expires On', expiresOn],
+    ];
+    const members = this.state.members.map((m, i) => ({
+      ...m, initials: ini(m.name), bg: 'var(--accents-' + m.c + ')', border: i ? SEP : 'none',
+      revoke: () => this.setState(st => ({ members: st.members.filter(x => x.email !== m.email) })),
+    }));
+    const n = members.length;
+    const stroke = this.props.logoStyle === 'Stroke';
+    return {
+      icoIosF: !android && !isMac && !stroke, icoAndF: android && !stroke, icoMacF: !!isMac && !stroke, icoIosS: !android && !isMac && stroke, icoAndS: android && stroke, icoMacS: !!isMac && stroke,
+      theme: dark ? 'dark' : '',
+      isPad: pad, isPhone: !pad, hiDevice: pad ? 'iPad' : 'iPhone', hiOrientation: pad ? 'landscape' : 'portrait',
+      pal: dark
+        ? { systemBg: '#1E1E1E', primary: '#2F80CC', label: '#7DB6EC', card: '#2A2A2A', bar: 'rgba(48,48,48,0.72)', glassHi: 'rgba(255,255,255,0.22)', glassEdge: 'rgba(255,255,255,0.14)' }
+        : { systemBg: '#F7F7F7', primary: '#226DB4', label: '#226DB4', card: '#FFFFFF', bar: 'rgba(255,255,255,0.72)', glassHi: 'rgba(255,255,255,0.9)', glassEdge: 'rgba(0,0,0,0.08)' },
+      bodyPad: pad ? '8px 32px 48px' : '8px 16px 56px',
+      outerDir: pad ? 'row' : 'column', colDisplay: pad ? 'flex' : 'contents', leftW: pad ? '400px' : 'auto',
+      name: src.name, initials: ini(src.name), logoBg: 'var(--accents-' + (src.c || 'blue') + ')',
+      versionText: 'Version ' + src.ver + ' (' + src.code + ')', date: src.date, size: src.size, notes: src.notes,
+      platform: android ? 'Android' : isMac ? 'macOS' : 'iOS', isIOS: !android && !isMac, isAndroid: android, isMac, isApple: !android,
+      isSharedApp: !!src.shared, sharedBy: src.sharedBy || '', sharerInitials: ini(src.sharedBy), sharerBg: 'var(--accents-' + (src.sc || 'gray') + ')',
+      showShare: !src.shared,
+      firstFive: members.slice(0, 5), allMembers: members,
+      memberCount: n + (n === 1 ? ' member' : ' members'), hasMore: n > 5, moreText: '+' + (n - 5), noMembers: n === 0,
+      infoRows: info.map((r, i) => row(r[0], r[1], i, r[2])),
+      provRows: prov.map((r, i) => ({ label: r[0], value: r[1], border: i ? SEP : 'none', color: expired && r[0] === 'Expires On' ? 'var(--accents-red)' : 'var(--labels-primary)' })),
+      privacy: [
+        { title: 'Data Linked to You', sub: 'May be collected and linked to your identity', tint: 'color-mix(in srgb, var(--zh-primary) 14%, transparent)', ink: 'var(--zh-primary-label)', slash: 0, items: [['Location', 'location'], ['Contacts', 'contacts'], ['Identifiers', 'identifiers'], ['Contact Info', 'contact-info'], ['User Content', 'user-content'], ['Diagnostics', 'diagnostics'], ['Other Data', 'other-data']].map(([t, f]) => ({ t, ic: 'assets/privacy/' + f + '.png' })) },
+        { title: 'Data Not Linked to You', sub: 'May be collected but not linked to your identity', tint: 'rgba(118,118,128,0.14)', ink: 'var(--labels-secondary)', slash: 1, items: [{ t: 'Usage Data', ic: 'assets/privacy/usage-data.png' }] },
+      ],
+      titleOpacity: this.state.scrolled ? 1 : 0,
+      navTf: this.state.scrolled ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.9)',
+      navPe: this.state.scrolled ? 'auto' : 'none',
+      canShare: !src.shared, actCols: src.shared ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)',
+      installLabel: { idle: 'Install', installing: 'Installing…', done: 'Open' }[this.state.install],
+      installShort: { idle: 'Install', installing: '…', done: 'Open' }[this.state.install],
+      isExpired: expired, expiresOn,
+      instBg: expired ? 'var(--fills-tertiary)' : 'color-mix(in srgb, var(--zh-primary) 95%, transparent)',
+      instSh: expired ? 'none' : '0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px rgba(255,255,255,0.4),inset 0 0 0 0.5px rgba(255,255,255,0.22)',
+      instInk: expired ? 'var(--labels-tertiary)' : '#fff', instCur: expired ? 'not-allowed' : 'pointer',
+      shrInk: expired ? 'var(--labels-tertiary)' : 'var(--labels-primary)', shrCur: expired ? 'not-allowed' : 'pointer',
+      install: () => { if (expired || this.state.install !== 'idle') return; this.setState({ install: 'installing' }); clearTimeout(this.it); this.it = setTimeout(() => this.setState({ install: 'done' }), 1600); },
+      share: () => { if (expired) return; this.setState({ share: true, sel: [], q: '' }); },
+      ...this.shareVals(pad),
+      onScroll: e => { const s = e.currentTarget.scrollTop > 250; if (s !== this.state.scrolled) this.setState({ scrolled: s }); },
+      back: () => this.props.onBack && this.props.onBack(),
+      sheetOpen: this.state.sheet,
+      openSheet: () => this.setState({ sheet: true }),
+      closeSheet: () => this.setState({ sheet: false }),
+      sheetAlign: pad ? 'center' : 'flex-end', sheetW: pad ? '540px' : '100%', sheetH: pad ? '620px' : 'calc(100% - 64px)', sheetR: pad ? '38px' : '34px 34px 0 0',
+      stop: e => e.stopPropagation(),
+      confirming: this.state.confirm,
+      canRevokeAll: n > 0, revokingAll: !!this.state.revokeAll,
+      askRevokeAll: () => this.setState({ revokeAll: true }),
+      cancelRevokeAll: () => this.setState({ revokeAll: false }),
+      confirmRevokeAll: () => { const k = this.state.members.length; this.setState({ revokeAll: false, sheet: false, members: [], toast: 'Access revoked for ' + k + (k === 1 ? ' member' : ' members') }); clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: '' }), 2200); },
+      askDelete: () => this.setState({ confirm: true }),
+      cancelDelete: () => this.setState({ confirm: false }),
+      confirmDelete: () => { this.setState({ confirm: false }); this.props.onDelete && this.props.onDelete(src.name); },
+    };
+  }
+  shareVals(pad) {
+    const { sel, q, members } = this.state;
+    const sharedSet = new Set(members.map(m => m.email));
+    const toggle = email => () => { if (sharedSet.has(email)) return; this.setState(st => ({ sel: st.sel.includes(email) ? st.sel.filter(e => e !== email) : [...st.sel, email] })); };
+    const ql = q.trim().toLowerCase();
+    const rank = m => sel.includes(m.email) ? sel.indexOf(m.email) : sel.length + TEAM.indexOf(m);
+    const list = TEAM.filter(m => !ql || m.name.toLowerCase().includes(ql) || m.email.includes(ql)).sort((a, b) => rank(a) - rank(b));
+    const k = sel.length;
+    return {
+      shareOpen: this.state.share,
+      closeShare: () => this.setState({ share: false }),
+      shareH: pad ? '720px' : 'calc(100% - 54px)', shareBtmPad: pad ? '20px' : '34px',
+      teamName: this.props.team || 'Zylker Mobile',
+      ver: (this.props.app || DEFAULT).ver, code: (this.props.app || DEFAULT).code,
+      q, hasQ: !!q, onQ: e => this.setState({ q: e.target.value }), clearQ: () => this.setState({ q: '' }),
+      hasSel: k > 0, selCount: String(k), clearSel: () => this.setState({ sel: [] }),
+      selList: sel.map(e => TEAM.find(m => m.email === e)).filter(Boolean).map(m => ({ initials: ini(m.name), first: m.name.split(' ')[0], bg: 'var(--accents-' + m.c + ')', toggle: toggle(m.email) })),
+      teamCountText: k ? k + ' of ' + TEAM.length + ' selected' : TEAM.length + ' members',
+      teamList: list.map((m, i) => {
+        const shared = sharedSet.has(m.email), on = sel.includes(m.email);
+        return { ...m, initials: ini(m.name), bg: 'var(--accents-' + m.c + ')', border: i ? SEP : 'none', toggle: toggle(m.email), shared, open: !shared, op: shared ? 0.55 : 1, cursor: shared ? 'default' : 'pointer',
+          ring: on ? 'none' : '1.5px solid var(--labels-tertiary)', fill: on ? 'var(--zh-primary)' : 'transparent', checkOp: on ? 1 : 0 };
+      }),
+      noResults: list.length === 0,
+      shareLabel: k ? 'Share with ' + k + (k === 1 ? ' member' : ' members') : 'Select members',
+      shareBtnBg: k ? 'color-mix(in srgb, var(--zh-primary) 95%, transparent)' : 'var(--fills-tertiary)',
+      shareBtnSh: k ? '0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px rgba(255,255,255,0.4),inset 0 0 0 0.5px rgba(255,255,255,0.22)' : 'none',
+      shareInk: k ? '#fff' : 'var(--labels-tertiary)', shareCursor: k ? 'pointer' : 'default',
+      doShare: () => {
+        if (!k) return;
+        const add = sel.map(e => TEAM.find(m => m.email === e)).filter(Boolean);
+        this.setState(st => ({ share: false, sel: [], q: '', members: [...st.members, ...add], toast: 'Shared with ' + k + (k === 1 ? ' member' : ' members') }));
+        clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: '' }), 2200);
+      },
+      hasToast: !!this.state.toast, toast: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

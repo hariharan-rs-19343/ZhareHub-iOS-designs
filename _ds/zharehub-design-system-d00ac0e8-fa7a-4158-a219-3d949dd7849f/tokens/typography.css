@@ -1,0 +1,88 @@
+/* ZhareHub iOS Typography — SF Pro type scale from iOS/iPadOS 26 */
+
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+  --font-family-rounded: "SF Compact Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-compact: "SF Compact", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Type scale — sizes and line heights */
+  --text-large-title-size: 34px;
+  --text-large-title-line: 41px;
+  --text-large-title-weight: 400;
+
+  --text-title1-size: 28px;
+  --text-title1-line: 34px;
+  --text-title1-weight: 400;
+
+  --text-title2-size: 22px;
+  --text-title2-line: 28px;
+  --text-title2-weight: 400;
+
+  --text-title3-size: 20px;
+  --text-title3-line: 25px;
+  --text-title3-weight: 400;
+
+  --text-headline-size: 17px;
+  --text-headline-line: 22px;
+  --text-headline-weight: 600;
+
+  --text-body-size: 17px;
+  --text-body-line: 22px;
+  --text-body-weight: 400;
+
+  --text-callout-size: 16px;
+  --text-callout-line: 21px;
+  --text-callout-weight: 400;
+
+  --text-subheadline-size: 15px;
+  --text-subheadline-line: 20px;
+  --text-subheadline-weight: 400;
+
+  --text-footnote-size: 13px;
+  --text-footnote-line: 18px;
+  --text-footnote-weight: 400;
+
+  --text-caption1-size: 12px;
+  --text-caption1-line: 16px;
+  --text-caption1-weight: 400;
+
+  --text-caption2-size: 11px;
+  --text-caption2-line: 13px;
+  --text-caption2-weight: 400;
+}
+
+/* Utility classes for each text style */
+.text-large-title { font-family: var(--font-family); font-size: var(--text-large-title-size); line-height: var(--text-large-title-line); font-weight: var(--text-large-title-weight); letter-spacing: 0.37px; }
+.text-large-title-bold { font-family: var(--font-family); font-size: var(--text-large-title-size); line-height: var(--text-large-title-line); font-weight: 700; letter-spacing: 0.37px; }
+.text-title1 { font-family: var(--font-family); font-size: var(--text-title1-size); line-height: var(--text-title1-line); font-weight: var(--text-title1-weight); letter-spacing: 0.36px; }
+.text-title1-bold { font-family: var(--font-family); font-size: var(--text-title1-size); line-height: var(--text-title1-line); font-weight: 700; letter-spacing: 0.36px; }
+.text-title2 { font-family: var(--font-family); font-size: var(--text-title2-size); line-height: var(--text-title2-line); font-weight: var(--text-title2-weight); letter-spacing: 0.35px; }
+.text-title2-bold { font-family: var(--font-family); font-size: var(--text-title2-size); line-height: var(--text-title2-line); font-weight: 700; letter-spacing: 0.35px; }
+.text-title3 { font-family: var(--font-family); font-size: var(--text-title3-size); line-height: var(--text-title3-line); font-weight: var(--text-title3-weight); letter-spacing: 0.38px; }
+.text-title3-bold { font-family: var(--font-family); font-size: var(--text-title3-size); line-height: var(--text-title3-line); font-weight: 600; letter-spacing: 0.38px; }
+.text-headline { font-family: var(--font-family); font-size: var(--text-headline-size); line-height: var(--text-headline-line); font-weight: var(--text-headline-weight); letter-spacing: -0.41px; }
+.text-headline-italic { font-family: var(--font-family); font-size: var(--text-headline-size); line-height: var(--text-headline-line); font-weight: 600; font-style: italic; letter-spacing: -0.41px; }
+.text-body { font-family: var(--font-family); font-size: var(--text-body-size); line-height: var(--text-body-line); font-weight: var(--text-body-weight); letter-spacing: -0.41px; }
+.text-body-bold { font-family: var(--font-family); font-size: var(--text-body-size); line-height: var(--text-body-line); font-weight: 600; letter-spacing: -0.41px; }
+.text-body-italic { font-family: var(--font-family); font-size: var(--text-body-size); line-height: var(--text-body-line); font-weight: 400; font-style: italic; letter-spacing: -0.41px; }
+.text-body-bold-italic { font-family: var(--font-family); font-size: var(--text-body-size); line-height: var(--text-body-line); font-weight: 600; font-style: italic; letter-spacing: -0.41px; }
+.text-callout { font-family: var(--font-family); font-size: var(--text-callout-size); line-height: var(--text-callout-line); font-weight: var(--text-callout-weight); letter-spacing: -0.32px; }
+.text-callout-bold { font-family: var(--font-family); font-size: var(--text-callout-size); line-height: var(--text-callout-line); font-weight: 600; letter-spacing: -0.32px; }
+.text-callout-italic { font-family: var(--font-family); font-size: var(--text-callout-size); line-height: var(--text-callout-line); font-weight: 400; font-style: italic; letter-spacing: -0.32px; }
+.text-callout-bold-italic { font-family: var(--font-family); font-size: var(--text-callout-size); line-height: var(--text-callout-line); font-weight: 600; font-style: italic; letter-spacing: -0.32px; }
+.text-subheadline { font-family: var(--font-family); font-size: var(--text-subheadline-size); line-height: var(--text-subheadline-line); font-weight: var(--text-subheadline-weight); letter-spacing: -0.24px; }
+.text-subheadline-bold { font-family: var(--font-family); font-size: var(--text-subheadline-size); line-height: var(--text-subheadline-line); font-weight: 600; letter-spacing: -0.24px; }
+.text-subheadline-italic { font-family: var(--font-family); font-size: var(--text-subheadline-size); line-height: var(--text-subheadline-line); font-weight: 400; font-style: italic; letter-spacing: -0.24px; }
+.text-subheadline-bold-italic { font-family: var(--font-family); font-size: var(--text-subheadline-size); line-height: var(--text-subheadline-line); font-weight: 600; font-style: italic; letter-spacing: -0.24px; }
+.text-footnote { font-family: var(--font-family); font-size: var(--text-footnote-size); line-height: var(--text-footnote-line); font-weight: var(--text-footnote-weight); letter-spacing: -0.08px; }
+.text-footnote-bold { font-family: var(--font-family); font-size: var(--text-footnote-size); line-height: var(--text-footnote-line); font-weight: 600; letter-spacing: -0.08px; }
+.text-footnote-italic { font-family: var(--font-family); font-size: var(--text-footnote-size); line-height: var(--text-footnote-line); font-weight: 400; font-style: italic; letter-spacing: -0.08px; }
+.text-footnote-bold-italic { font-family: var(--font-family); font-size: var(--text-footnote-size); line-height: var(--text-footnote-line); font-weight: 600; font-style: italic; letter-spacing: -0.08px; }
+.text-caption1 { font-family: var(--font-family); font-size: var(--text-caption1-size); line-height: var(--text-caption1-line); font-weight: var(--text-caption1-weight); }
+.text-caption1-bold { font-family: var(--font-family); font-size: var(--text-caption1-size); line-height: var(--text-caption1-line); font-weight: 500; }
+.text-caption1-italic { font-family: var(--font-family); font-size: var(--text-caption1-size); line-height: var(--text-caption1-line); font-weight: 400; font-style: italic; }
+.text-caption1-bold-italic { font-family: var(--font-family); font-size: var(--text-caption1-size); line-height: var(--text-caption1-line); font-weight: 500; font-style: italic; }
+.text-caption2 { font-family: var(--font-family); font-size: var(--text-caption2-size); line-height: var(--text-caption2-line); font-weight: var(--text-caption2-weight); }
+.text-caption2-bold { font-family: var(--font-family); font-size: var(--text-caption2-size); line-height: var(--text-caption2-line); font-weight: 600; }
+.text-caption2-italic { font-family: var(--font-family); font-size: var(--text-caption2-size); line-height: var(--text-caption2-line); font-weight: 400; font-style: italic; }
+.text-caption2-bold-italic { font-family: var(--font-family); font-size: var(--text-caption2-size); line-height: var(--text-caption2-line); font-weight: 600; font-style: italic; }

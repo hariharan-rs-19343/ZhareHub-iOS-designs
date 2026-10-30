@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/styles.css">
+<script src="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/_ds_bundle.js"></script>
+</helmet>
+<div style="position:absolute;inset:0;z-index:20;font-family:'SF Pro',-apple-system,system-ui,sans-serif">
+  <sc-if value="{{ isAlert }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:var(--miscellaneous-alert-overlay);display:flex;align-items:center;justify-content:center;padding:0 46px">
+      <div style="width:100%;max-width:300px;border-radius:34px;background:var(--backgrounds-primary-elevated);box-shadow:0 15px 75px rgba(0,0,0,0.18);padding:22px 18px 18px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:6px;text-align:center;padding:0 6px">
+          <div style="font-size:17px;font-weight:600;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary);text-wrap:pretty">“ZhareHub” Wants to Use “{{ domain }}” to Sign In</div>
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);text-wrap:pretty">This allows the app and website to share information about you.</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <div onClick="{{ onCancel }}" style="flex:1;height:48px;border-radius:100px;background:var(--zh-glass-fill, var(--fills-tertiary));backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi, rgba(255,255,255,0.6)),inset 0 0 0 0.5px var(--zh-glass-edge, rgba(0,0,0,0.08));display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;color:var(--labels-primary);cursor:pointer" style-active="opacity:0.7">Cancel</div>
+          <div onClick="{{ onContinue }}" style="flex:1;height:48px;border-radius:100px;background:color-mix(in srgb, var(--accents-blue) 95%, transparent);backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px rgba(255,255,255,0.4),inset 0 0 0 0.5px rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:#fff;cursor:pointer" style-active="opacity:0.8">Continue</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isSheet }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:var(--miscellaneous-alert-overlay);display:flex;flex-direction:column;justify-content:flex-end;align-items:center">
+      <div style="width:calc(100% - 16px);max-width:540px;box-sizing:border-box;margin:0 8px 8px;border-radius:34px 34px 50px 50px;background:var(--backgrounds-primary-elevated);box-shadow:0 15px 75px rgba(0,0,0,0.18);padding:10px 20px 40px;display:flex;flex-direction:column;gap:20px">
+        <div style="width:36px;height:5px;border-radius:100px;background:var(--fills-secondary);align-self:center"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="width:30px"></div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:17px;font-weight:600;color:var(--labels-primary)"><span style="font-size:19px;line-height:1"><svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor" style="display:block"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg></span>Sign in with Apple</div>
+          <div onClick="{{ onCancel }}" style="width:30px;height:30px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--labels-secondary);cursor:pointer">✕</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+          <img src="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/assets/app-icon-light.png" alt="ZhareHub" style="width:64px;height:64px;border-radius:14px;box-shadow:0 0 0 0.5px var(--separators-non-opaque)">
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);max-width:280px;text-wrap:pretty">Create an account for ZhareHub using your Apple Account.</div>
+        </div>
+        <div style="border-radius:13px;background:var(--fills-quaternary);overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 16px;font-size:17px;letter-spacing:-0.41px"><span style="color:var(--labels-primary)">Name</span><span style="color:var(--labels-secondary)">Alex Rivera</span></div>
+          <div style="height:0.5px;background:var(--separators-non-opaque);margin-left:16px"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 16px;font-size:17px;letter-spacing:-0.41px"><span style="color:var(--labels-primary)">Email</span><span style="color:var(--labels-secondary)">Hide My Email</span></div>
+        </div>
+        <div onClick="{{ onContinue }}" style="height:52px;border-radius:100px;background:color-mix(in srgb, var(--accents-blue) 95%, transparent);backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px rgba(255,255,255,0.4),inset 0 0 0 0.5px rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:#fff;cursor:pointer" style-active="opacity:0.8">Continue</div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:var(--miscellaneous-alert-overlay);display:flex;align-items:center;justify-content:center">
+      <div style="padding:20px 24px;border-radius:20px;background:var(--backgrounds-primary-elevated);box-shadow:0 10px 60px rgba(0,0,0,0.2)">
+        <x-import component-from-global-scope="ZhareHubDesignSystem_d00ac0.ProgressIndicator" label="{{ true }}" status-text="Signing in…" hint-size="120px,60px"></x-import>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:var(--backgrounds-primary);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 32px 60px;text-align:center">
+      <div style="width:72px;height:72px;border-radius:100px;background:var(--accents-green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;font-weight:700">✓</div>
+      <div style="font-size:28px;font-weight:700;letter-spacing:0.36px;color:var(--labels-primary)">{{ doneTitle }}</div>
+      <div style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-secondary)">{{ doneBody }}</div>
+      <div onClick="{{ onReset }}" style="margin-top:12px;height:44px;padding:0 22px;border-radius:100px;background:var(--zh-glass-fill, var(--fills-tertiary));backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi, rgba(255,255,255,0.6)),inset 0 0 0 0.5px var(--zh-glass-edge, rgba(0,0,0,0.08));display:flex;align-items:center;font-size:17px;font-weight:600;color:var(--zh-primary-label, var(--accents-blue));cursor:pointer" style-active="opacity:0.7">Back to Login</div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:874},&quot;step&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;alert&quot;,&quot;loading&quot;,&quot;done&quot;],&quot;default&quot;:&quot;alert&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;provider&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;zoho&quot;,&quot;zohoSignup&quot;,&quot;google&quot;,&quot;apple&quot;],&quot;default&quot;:&quot;zoho&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onCancel&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onContinue&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onReset&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const { step, provider } = this.props;
+    const names = { zoho: 'Zoho', zohoSignup: 'Zoho', google: 'Google', apple: 'Apple' };
+    const domains = { zoho: 'zoho.com', zohoSignup: 'zoho.com', google: 'google.com' };
+    const signup = provider === 'zohoSignup';
+    return {
+      isAlert: step === 'alert' && provider !== 'apple',
+      isSheet: step === 'alert' && provider === 'apple',
+      isLoading: step === 'loading',
+      isDone: step === 'done',
+      domain: domains[provider] || '',
+      doneTitle: signup ? 'Account Created' : 'Signed In',
+      doneBody: (signup ? 'Signed up with ' : 'Signed in with ') + (names[provider] || '') + '.',
+      onCancel: this.props.onCancel,
+      onContinue: this.props.onContinue,
+      onReset: this.props.onReset,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/fig-tokens.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/typography.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/styles.css">
+<script src="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/_ds_bundle.js"></script>
+<style>@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Regular.ttf") format("truetype");font-weight:400;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Medium.ttf") format("truetype");font-weight:500;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Semibold.ttf") format("truetype");font-weight:600;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Bold.ttf") format("truetype");font-weight:700;font-display:swap}@keyframes zhspin{to{transform:rotate(360deg)}}@keyframes zhpulse{0%,100%{opacity:1}50%{opacity:0.45}}</style>
+</helmet>
+<div ref="{{ rootRef }}" class="{{ theme }}" style="--zh-primary: {{ pal.primary }};--zh-primary-label: {{ pal.label }};--zh-system-bg: {{ pal.systemBg }};--zh-card: {{ pal.card }};--zh-bar: {{ pal.bar }};--zh-tab-sel: {{ pal.tabSel }};--zh-glass-hi: {{ pal.glassHi }};--zh-glass-edge: {{ pal.glassEdge }};--zh-menu: {{ pal.menu }};--zh-seg-sel: {{ pal.segSel }};position:relative;width:100%;height:100%;overflow:hidden;background:var(--zh-system-bg);font-family:'Zoho Puvi','SF Pro',-apple-system,system-ui,sans-serif;display:flex;flex-direction:column">
+  <sc-if value="{{ isPhone }}" hint-placeholder-val="{{ true }}">
+    <x-import component-from-global-scope="ZhareHubDesignSystem_d00ac0.StatusBarIPhone2" hint-size="402px,62px"></x-import>
+    <div style="height:54px;padding:0 16px;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px;position:relative;z-index:30">
+      <div></div>
+      <div style="display:flex;justify-content:center">
+        <div style="width:100%;max-width:250px;height:32px;border-radius:100px;background:rgba(118,118,128,0.12);padding:2px;box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr">
+          <div onClick="{{ segMine }}" style="border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-0.08px;color:var(--labels-primary);cursor:pointer;background:{{ s0bg }};box-shadow:{{ s0sh }};font-weight:{{ s0w }}">My Application</div>
+          <div onClick="{{ segShared }}" style="border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-0.08px;color:var(--labels-primary);cursor:pointer;background:{{ s1bg }};box-shadow:{{ s1sh }};font-weight:{{ s1w }}">Shared with me</div>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div onClick="{{ toggleMenu }}" style="width:44px;height:44px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;color:var(--labels-primary);cursor:pointer" style-active="transform:scale(0.94)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="10" cy="7.5" r="3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M16.2188 4.79297C17.0017 5.43484 17.5012 6.40957 17.5012 7.50096C17.5012 8.59236 17.0017 9.56708 16.2188 10.209" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.5 20.5C16.5 16.9101 13.5899 14 10 14C6.41015 14 3.5 16.9101 3.5 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20.499 20.5002C20.499 18.4897 19.5862 16.6923 18.1523 15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:52px;right:0;width:250px;border-radius:24px;padding:6px;box-sizing:border-box;background:var(--zh-menu);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column">
+            <div style="padding:8px 14px 6px;font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">Switch team</div>
+            <sc-for list="{{ teams }}" as="t" hint-placeholder-count="3">
+              <div onClick="{{ t.pick }}" style="height:44px;border-radius:14px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer" style-hover="background:rgba(118,118,128,0.12)">
+                <span style="min-width:0;font-size:17px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;opacity:{{ t.check }}"><path d="M3 8.5l3.2 3L13 4.5" stroke="var(--zh-primary-label)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ showSkeleton }}" hint-placeholder-val="{{ false }}">
+    <div aria-busy="true" aria-label="Loading applications" style="flex:1;min-height:0;overflow:hidden;padding:12px 16px 150px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:2px;padding:0 4px">
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <div style="font-size:28px;font-weight:700;line-height:34px;letter-spacing:0.36px;color:var(--labels-primary);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ teamName }}</div>
+          <div style="animation:zhpulse 1.4s ease-in-out infinite"><div style="width:120px;height:14px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;animation:zhpulse 1.4s ease-in-out infinite">
+        <sc-for list="{{ skPhone }}" as="g" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:10px 4px 2px"><div style="width:{{ g.w }};height:20px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:12px">
+              <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="2">
+          <div style="background:var(--zh-card);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:52px;height:52px;flex-shrink:0;border-radius:12px;background:rgba(118,118,128,0.16)"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px"><div style="width:62%;height:15px;border-radius:6px;background:rgba(118,118,128,0.16)"></div><div style="width:34%;height:12px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+              <div style="width:22px;height:22px;flex-shrink:0;align-self:flex-start;border-radius:7px;background:rgba(118,118,128,0.16)"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;border-radius:12px;background:rgba(118,118,128,0.08)">
+              <div style="display:flex;flex-direction:column;gap:7px"><div style="width:46%;height:10px;border-radius:5px;background:rgba(118,118,128,0.16)"></div><div style="width:70%;height:14px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+              <div style="display:flex;flex-direction:column;gap:7px"><div style="width:30%;height:10px;border-radius:5px;background:rgba(118,118,128,0.16)"></div><div style="width:52%;height:14px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="width:28%;height:12px;border-radius:6px;background:rgba(118,118,128,0.16)"></div><div style="width:100%;height:13px;border-radius:6px;background:rgba(118,118,128,0.16)"></div><div style="width:76%;height:13px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+          </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ showList }}" hint-placeholder-val="{{ true }}">
+    <div onScroll="{{ onPhoneScroll }}" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:12px 16px 150px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:0 4px">
+        <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+          <div style="font-size:28px;font-weight:700;line-height:34px;letter-spacing:0.36px;color:var(--labels-primary);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ teamName }}</div>
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">{{ countText }}</div>
+        </div>
+        <div style="position:relative;flex-shrink:0;min-width:0">
+          <div onClick="{{ toggleBundle }}" aria-label="Filter by bundle" style="height:34px;max-width:180px;padding:0 12px 0 10px;box-sizing:border-box;border-radius:100px;background:{{ bBg }};color:{{ bColor }};box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;align-items:center;gap:6px;cursor:pointer" style-active="transform:scale(0.96)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>
+            <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bundleLabel }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:block;flex-shrink:0"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <sc-if value="{{ bundleOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:42px;right:0;z-index:30;width:300px;max-height:420px;overflow-y:auto;scrollbar-width:none;border-radius:24px;padding:6px;box-sizing:border-box;background:var(--zh-menu);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column">
+              <div style="padding:8px 14px 6px;font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">Bundle</div>
+              <sc-for list="{{ bundles }}" as="b" hint-placeholder-count="4">
+                <div onClick="{{ b.pick }}" style="min-height:44px;padding:7px 14px;box-sizing:border-box;border-radius:14px;display:flex;align-items:center;gap:12px;cursor:pointer" style-hover="background:rgba(118,118,128,0.12)">
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px">
+                    <span style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.name }}</span>
+                    <sc-if value="{{ b.hasId }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.id }}</span></sc-if>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;opacity:{{ b.check }}"><path d="M3 8.5l3.2 3L13 4.5" stroke="var(--zh-primary-label)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:10px"><sc-if value="{{ pinCapsule }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;top:0;height:0;z-index:3;margin-bottom:-10px;display:flex;justify-content:center;pointer-events:none">
+          <div style="height:34px;padding:0 16px;border-radius:100px;box-sizing:border-box;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--labels-primary);white-space:nowrap;opacity:{{ g.capOp }};transform:{{ g.capTf }};transition:opacity 0.2s ease, transform 0.3s cubic-bezier(0.2,0.8,0.2,1)">{{ g.title }}</div>
+        </div>
+        <div data-gh="1" style="font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary);padding:8px 4px 0">{{ g.title }}</div>
+      </sc-if>
+      <sc-if value="{{ pinBar }}" hint-placeholder-val="{{ false }}"><div style="position:sticky;top:-12px;z-index:3;background:color-mix(in srgb, var(--zh-system-bg) 82%, transparent);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);margin:-12px -16px -6px;padding:20px 20px 6px;font-size:20px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary)">{{ g.title }}</div></sc-if><div style="display:grid;grid-template-columns:minmax(0,1fr);gap:12px">
+        <sc-for list="{{ g.items }}" as="a" hint-placeholder-count="2">
+          <div onClick="{{ a.open }}" onContextMenu="{{ a.onCtx }}" onPointerDown="{{ a.onDown }}" onPointerUp="{{ cancelPress }}" onPointerLeave="{{ cancelPress }}" style="background:var(--zh-card);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:14px;cursor:pointer;position:relative;z-index:{{ a.z }};transform:{{ a.tf }};box-shadow:{{ a.sh }};transition:transform 0.25s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.25s;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:52px;height:52px;flex-shrink:0;border-radius:12px;background:{{ a.logoBg }};display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,0.08)">{{ a.initials }}</div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;align-self:center">
+                <div style="font-size:17px;font-weight:600;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div>
+                <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">{{ a.version }}</div>
+                <sc-if value="{{ a.expired }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-top:4px;height:22px;padding:0 9px;border-radius:100px;background:color-mix(in srgb, var(--accents-red) 14%, transparent);color:color-mix(in oklch, var(--accents-red) 72%, var(--labels-primary));font-size:12px;font-weight:600;display:flex;align-items:center;white-space:nowrap">Profile expired</span></sc-if>
+              </div>
+              <div title="{{ a.platform }}" aria-label="{{ a.platform }}" style="flex-shrink:0;align-self:flex-start;color:var(--labels-secondary)">
+                <sc-if value="{{ a.icoIosF }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(7.375 4.46) scale(1.7)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" fill="currentColor"></path></svg></sc-if>
+                <sc-if value="{{ a.icoAndF }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><path fill-rule="evenodd" d="M10.1 12.4A7.95 7.95 0 0 1 26 12.4Z M15 8.2a1.1 1.1 0 1 0 0.01 0Z M21.1 8.2a1.1 1.1 0 1 0 0.01 0Z" fill="currentColor"></path><path d="M10.1 13.6H26V25.4a1.2 1.2 0 0 1-1.2 1.2H11.3a1.2 1.2 0 0 1-1.2-1.2Z" fill="currentColor"></path><rect x="13" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="19.3" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="5.2" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><rect x="27.1" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><path d="M13.6 5L12.4 3.3M22.5 5L23.7 3.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if>
+                <sc-if value="{{ a.icoMacF }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><defs><clipPath id="zhFinderClip"><rect x="2.5" y="5.5" width="31" height="25.5" rx="9"></rect></clipPath><linearGradient id="zhFinderL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46B9FF"></stop><stop offset="1" stop-color="#1673F0"></stop></linearGradient><linearGradient id="zhFinderR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2F9FF"></stop><stop offset="1" stop-color="#CFE8FF"></stop></linearGradient></defs><g clip-path="url(#zhFinderClip)"><rect x="2.5" y="5.5" width="31" height="25.5" fill="url(#zhFinderR)"></rect><path d="M2 5H21.7L13.98 16.25C13.78 16.55 13.99 16.96 14.36 16.96H18.3C18.55 16.96 18.75 17.16 18.75 17.41V31.5H2Z" fill="url(#zhFinderL)"></path></g><path d="M25.3667 23C19.7838 25.4185 16.5587 25.3636 10.6035 23" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M25.3672 11.9997V15.355" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path><path d="M10.6035 12.258V15.6132" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ a.icoIosS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(8 5.25) scale(1.6)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path></svg></sc-if><sc-if value="{{ a.icoAndS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11.2 13A6.8 6.8 0 0 1 24.8 13Z"></path><path d="M11.2 16.2H24.8V24.2a1.6 1.6 0 0 1-1.6 1.6H12.8a1.6 1.6 0 0 1-1.6-1.6Z"></path><path d="M15.2 26V31M20.8 26V31M7 16.4V23.4M29 16.4V23.4M14 7.5L12.6 5.2M22 7.5L23.4 5.2"></path></g><circle cx="15.4" cy="10.6" r="1.1" fill="currentColor"></circle><circle cx="20.6" cy="10.6" r="1.1" fill="currentColor"></circle></svg></sc-if><sc-if value="{{ a.icoMacS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6.5" width="28" height="23.5" rx="7.5"></rect><path d="M20.8 6.5L14.5 15.8C14.2 16.3 14.5 16.9 15 16.9H18.2C18.5 16.9 18.8 17.2 18.8 17.5V30"></path><path d="M25.4 23C19.8 25.4 16.6 25.4 10.6 23"></path><path d="M25.4 12V15.4M10.6 12V15.4"></path></g></svg></sc-if>
+              </div>
+            </div>
+            <sc-if value="{{ a.shared }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px;margin-top:-2px">
+                <span style="width:24px;height:24px;flex-shrink:0;border-radius:100px;background:{{ a.sharerBg }};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">{{ a.sharerInitials }}</span>
+                <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Shared by <span style="font-weight:600;color:var(--labels-primary)">{{ a.sharedBy }}</span></span>
+              </div>
+            </sc-if>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(118,118,128,0.08)">
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;letter-spacing:0;color:var(--labels-secondary)">Created</span><span style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--labels-primary)">{{ a.date }}</span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;letter-spacing:0;color:var(--labels-secondary)">Size</span><span style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--labels-primary)">{{ a.size }}</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:13px;font-weight:600;letter-spacing:-0.08px;color:var(--labels-primary)">What's new</span>
+              <span style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ a.notes }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div></div></sc-for>
+    </div>
+    </sc-if>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(to top, var(--zh-system-bg) 30%, transparent);pointer-events:none"></div>
+    <sc-if value="{{ notSearching }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;left:21px;right:21px;bottom:34px;display:flex;gap:12px;align-items:center;z-index:5">
+      <div style="flex:1;min-width:0;height:62px;border-radius:100px;padding:4px;box-sizing:border-box;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex">
+        <div style="flex:1;border-radius:100px;background:var(--zh-tab-sel);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--zh-primary-label);cursor:pointer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><path d="M7 21C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 14.6429L11 17.6429L14 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 14.6429L21 17.6429L18 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.1px">Applications</span>
+        </div>
+        <div style="flex:1;border-radius:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--labels-primary);cursor:pointer" style-active="background:var(--zh-tab-sel)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="8" cy="4.40002" r="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M8 6.40002C6.34315 6.40002 5 8.19089 5 10.4C5 11.5046 5.89543 12.4 7 12.4H9C10.1046 12.4 11 11.5046 11 10.4C11 8.19089 9.65685 6.40002 8 6.40002Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="16" cy="4.40002" r="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M16 6.40002C14.3431 6.40002 13 8.19089 13 10.4C13 11.5046 13.8954 12.4 15 12.4H17C18.1046 12.4 19 11.5046 19 10.4C19 8.19089 17.6569 6.40002 16 6.40002Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 13.3996C14 14.5042 13.1046 15.3996 12 15.3996C10.8954 15.3996 10 14.5042 10 13.3996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 13.3996V13.7373C4 14.3792 4.52037 14.8996 5.16228 14.8996C5.66256 14.8996 6.10899 15.2266 6.26719 15.7012C6.40865 16.1256 6.30019 16.5994 5.98388 16.9157L5.92705 16.9725C5.41506 17.4845 5.41505 18.3147 5.92705 18.8266L6.57295 19.4725C7.08495 19.9845 7.91505 19.9845 8.42705 19.4725L8.48388 19.4157C8.80019 19.0994 9.27404 18.9909 9.69842 19.1324C10.173 19.2906 10.5 19.737 10.5 20.2373C10.5 20.8792 11.0204 21.3996 11.6623 21.3996H12.1972C12.9167 21.3996 13.5 20.8163 13.5 20.0968C13.5 19.6612 13.7177 19.2545 14.0801 19.0128L14.146 18.9689C14.6578 18.6278 15.3291 18.6464 15.8211 19.0154L15.949 19.1114C16.5521 19.5637 17.3959 19.5037 17.9289 18.9707L18.0729 18.8266C18.5849 18.3147 18.5849 17.4845 18.0729 16.9725L18.0161 16.9157C17.6998 16.5994 17.5913 16.1256 17.7328 15.7012C17.891 15.2266 18.3374 14.8996 18.8377 14.8996C19.4796 14.8996 20 14.3792 20 13.7373V13.3996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:10px;font-weight:500;letter-spacing:0.1px">Manage Team</span>
+        </div>
+        <div onClick="{{ goSettings }}" style="flex:1;border-radius:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--labels-primary);cursor:pointer" style-active="background:var(--zh-tab-sel)">
+          <span style="width:24px;height:24px;border-radius:100px;background:var(--accents-indigo);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">AM</span>
+          <span style="font-size:10px;font-weight:500;letter-spacing:0.1px">Settings</span>
+        </div>
+      </div>
+      <div onClick="{{ openSearch }}" aria-label="Search" style="width:62px;height:62px;flex-shrink:0;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(0.94)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="var(--labels-primary)" stroke-width="2"></circle><path d="M15.5 15.5L20 20" stroke="var(--labels-primary)" stroke-width="2" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:21px;right:21px;bottom:34px;display:flex;gap:12px;align-items:center;z-index:5">
+      <div onClick="{{ exitSearch }}" aria-label="Back to Applications" style="width:62px;height:62px;flex-shrink:0;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;color:var(--zh-primary-label);cursor:pointer" style-active="transform:scale(0.94)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><path d="M7 21C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 14.6429L11 17.6429L14 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 14.6429L21 17.6429L18 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="flex:1;min-width:0;height:62px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;gap:10px;padding:0 10px 0 20px;box-sizing:border-box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="10.5" cy="10.5" r="6.5" stroke="var(--labels-secondary)" stroke-width="2.2"></circle><path d="M15.5 15.5L20 20" stroke="var(--labels-secondary)" stroke-width="2.2" stroke-linecap="round"></path></svg>
+        <input ref="{{ phoneInput }}" value="{{ q }}" onChange="{{ onQ }}" placeholder="Search applications" aria-label="Search applications" enterKeyHint="search" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:17px;letter-spacing:-0.41px;color:var(--labels-primary)">
+        <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ clearQ }}" aria-label="Clear" style="width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <span style="width:18px;height:18px;border-radius:100px;background:var(--labels-tertiary);display:flex;align-items:center;justify-content:center"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 1l6 6M7 1L1 7" stroke="var(--zh-system-bg)" stroke-width="1.6" stroke-linecap="round"></path></svg></span>
+            </div>
+          </sc-if>
+      </div>
+    </div>
+    </sc-if>
+  </sc-if>
+  <sc-if value="{{ isPad }}" hint-placeholder-val="{{ false }}">
+    <div style="height:32px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;font-family:'SF Pro',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--labels-primary)">
+      <div style="display:flex;gap:8px"><span>9:41</span><span>Mon Jun 10</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span>100%</span><span style="width:25px;height:12px;border-radius:4px;border:1px solid var(--labels-tertiary);padding:1.5px;box-sizing:border-box;display:flex"><span style="flex:1;border-radius:2px;background:var(--labels-primary)"></span></span></div>
+    </div>
+    <div style="height:68px;flex-shrink:0;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px;position:relative;z-index:30">
+      <div style="display:flex;justify-content:flex-start">
+        <div style="height:44px;border-radius:100px;padding:4px;box-sizing:border-box;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;gap:2px;transition:opacity 0.25s ease, transform 0.3s cubic-bezier(0.2,0.8,0.2,1);opacity:{{ compactOpacity }};transform:{{ compactTransform }};pointer-events:{{ compactPe }}">
+          <div onClick="{{ segMine }}" title="My Application" aria-label="My Application" style="width:40px;height:36px;border-radius:100px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:{{ c0bg }};color:{{ c0color }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><path d="M7 21C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 14.6429L11 17.6429L14 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 14.6429L21 17.6429L18 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <div onClick="{{ segShared }}" title="Shared with me" aria-label="Shared with me" style="width:40px;height:36px;border-radius:100px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:{{ c1bg }};color:{{ c1color }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="10" cy="7.5" r="3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M16.2188 4.79297C17.0017 5.43484 17.5012 6.40957 17.5012 7.50096C17.5012 8.59236 17.0017 9.56708 16.2188 10.209" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.5 20.5C16.5 16.9101 13.5899 14 10 14C6.41015 14 3.5 16.9101 3.5 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20.499 20.5002C20.499 18.4897 19.5862 16.6923 18.1523 15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+        </div>
+      </div>
+      <div style="height:54px;border-radius:100px;padding:4px;box-sizing:border-box;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;gap:2px">
+        <div style="height:46px;padding:0 18px;border-radius:100px;background:var(--zh-tab-sel);display:flex;align-items:center;gap:8px;color:var(--zh-primary-label);cursor:pointer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><path d="M7 21C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 14.6429L11 17.6429L14 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 14.6429L21 17.6429L18 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px">Applications</span>
+        </div>
+        <div style="height:46px;padding:0 18px;border-radius:100px;display:flex;align-items:center;gap:8px;color:var(--labels-primary);cursor:pointer" style-active="background:var(--zh-tab-sel)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="8" cy="4.40002" r="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M8 6.40002C6.34315 6.40002 5 8.19089 5 10.4C5 11.5046 5.89543 12.4 7 12.4H9C10.1046 12.4 11 11.5046 11 10.4C11 8.19089 9.65685 6.40002 8 6.40002Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="16" cy="4.40002" r="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M16 6.40002C14.3431 6.40002 13 8.19089 13 10.4C13 11.5046 13.8954 12.4 15 12.4H17C18.1046 12.4 19 11.5046 19 10.4C19 8.19089 17.6569 6.40002 16 6.40002Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 13.3996C14 14.5042 13.1046 15.3996 12 15.3996C10.8954 15.3996 10 14.5042 10 13.3996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 13.3996V13.7373C4 14.3792 4.52037 14.8996 5.16228 14.8996C5.66256 14.8996 6.10899 15.2266 6.26719 15.7012C6.40865 16.1256 6.30019 16.5994 5.98388 16.9157L5.92705 16.9725C5.41506 17.4845 5.41505 18.3147 5.92705 18.8266L6.57295 19.4725C7.08495 19.9845 7.91505 19.9845 8.42705 19.4725L8.48388 19.4157C8.80019 19.0994 9.27404 18.9909 9.69842 19.1324C10.173 19.2906 10.5 19.737 10.5 20.2373C10.5 20.8792 11.0204 21.3996 11.6623 21.3996H12.1972C12.9167 21.3996 13.5 20.8163 13.5 20.0968C13.5 19.6612 13.7177 19.2545 14.0801 19.0128L14.146 18.9689C14.6578 18.6278 15.3291 18.6464 15.8211 19.0154L15.949 19.1114C16.5521 19.5637 17.3959 19.5037 17.9289 18.9707L18.0729 18.8266C18.5849 18.3147 18.5849 17.4845 18.0729 16.9725L18.0161 16.9157C17.6998 16.5994 17.5913 16.1256 17.7328 15.7012C17.891 15.2266 18.3374 14.8996 18.8377 14.8996C19.4796 14.8996 20 14.3792 20 13.7373V13.3996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:15px;font-weight:500;letter-spacing:-0.24px">Manage Team</span>
+        </div>
+        <div onClick="{{ goSettings }}" style="height:46px;padding:0 18px;border-radius:100px;display:flex;align-items:center;gap:8px;color:var(--labels-primary);cursor:pointer" style-active="background:var(--zh-tab-sel)">
+          <span style="width:22px;height:22px;border-radius:100px;background:var(--accents-indigo);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">AM</span>
+          <span style="font-size:15px;font-weight:500;letter-spacing:-0.24px">Settings</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;align-items:center;gap:10px;min-width:0">
+        <div onClick="{{ padOpenSearch }}" aria-label="Search" style="width:{{ padFieldW }};flex-shrink:0;transition:width 0.3s cubic-bezier(0.2,0.8,0.2,1);cursor:text;overflow:hidden;height:44px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;gap:8px;padding:{{ padFieldPad }};box-sizing:border-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="10.5" cy="10.5" r="6.5" stroke="var(--labels-secondary)" stroke-width="2.2"></circle><path d="M15.5 15.5L20 20" stroke="var(--labels-secondary)" stroke-width="2.2" stroke-linecap="round"></path></svg>
+          <sc-if value="{{ padExpanded }}" hint-placeholder-val="{{ false }}">
+          <input ref="{{ padInput }}" value="{{ q }}" onChange="{{ onQ }}" placeholder="Search applications" aria-label="Search applications" enterKeyHint="search" onBlur="{{ padBlur }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:17px;letter-spacing:-0.41px;color:var(--labels-primary)">
+          <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ clearQ }}" aria-label="Clear" style="width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <span style="width:18px;height:18px;border-radius:100px;background:var(--labels-tertiary);display:flex;align-items:center;justify-content:center"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 1l6 6M7 1L1 7" stroke="var(--zh-system-bg)" stroke-width="1.6" stroke-linecap="round"></path></svg></span>
+            </div>
+          </sc-if>          </sc-if>
+
+        </div>
+        <div style="position:relative">
+          <div onClick="{{ toggleMenu }}" aria-label="Switch team" style="height:44px;padding:{{ teamPad }};border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;gap:8px;color:var(--labels-primary);cursor:pointer" style-active="transform:scale(0.96)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><circle cx="10" cy="7.5" r="3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M16.2188 4.79297C17.0017 5.43484 17.5012 6.40957 17.5012 7.50096C17.5012 8.59236 17.0017 9.56708 16.2188 10.209" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.5 20.5C16.5 16.9101 13.5899 14 10 14C6.41015 14 3.5 16.9101 3.5 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20.499 20.5002C20.499 18.4897 19.5862 16.6923 18.1523 15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <sc-if value="{{ teamLabel }}" hint-placeholder-val="{{ true }}">
+            <span style="max-width:200px;font-size:15px;font-weight:600;letter-spacing:-0.24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ teamName }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="var(--labels-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </sc-if>
+          </div>
+          <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:52px;right:0;width:260px;border-radius:24px;padding:6px;box-sizing:border-box;background:var(--zh-menu);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column">
+              <div style="padding:8px 14px 6px;font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">Switch team</div>
+              <sc-for list="{{ teams }}" as="t" hint-placeholder-count="3">
+                <div onClick="{{ t.pick }}" style="height:44px;border-radius:14px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer" style-hover="background:rgba(118,118,128,0.12)">
+                  <span style="min-width:0;font-size:17px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;opacity:{{ t.check }}"><path d="M3 8.5l3.2 3L13 4.5" stroke="var(--zh-primary-label)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+    <sc-if value="{{ showSkeleton }}" hint-placeholder-val="{{ false }}">
+    <div aria-busy="true" aria-label="Loading applications" style="flex:1;min-height:0;overflow:hidden;padding:8px 32px 48px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:0 4px">
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+          <div style="font-size:34px;font-weight:700;line-height:41px;letter-spacing:0.4px;color:var(--labels-primary);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ teamName }}</div>
+          <div style="animation:zhpulse 1.4s ease-in-out infinite"><div style="width:120px;height:14px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+        </div>
+        <div style="width:300px;flex-shrink:0;height:32px;border-radius:100px;background:rgba(118,118,128,0.12);padding:2px;box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr;margin-bottom:4px">
+          <div onClick="{{ segMine }}" style="border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-0.08px;color:var(--labels-primary);cursor:pointer;background:{{ s0bg }};box-shadow:{{ s0sh }};font-weight:{{ s0w }}">My Application</div>
+          <div onClick="{{ segShared }}" style="border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-0.08px;color:var(--labels-primary);cursor:pointer;background:{{ s1bg }};box-shadow:{{ s1sh }};font-weight:{{ s1w }}">Shared with me</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;animation:zhpulse 1.4s ease-in-out infinite">
+        <sc-for list="{{ skPad }}" as="g" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:10px 4px 2px"><div style="width:{{ g.w }};height:20px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">
+              <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+          <div style="background:var(--zh-card);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:52px;height:52px;flex-shrink:0;border-radius:12px;background:rgba(118,118,128,0.16)"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px"><div style="width:62%;height:15px;border-radius:6px;background:rgba(118,118,128,0.16)"></div><div style="width:34%;height:12px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+              <div style="width:22px;height:22px;flex-shrink:0;align-self:flex-start;border-radius:7px;background:rgba(118,118,128,0.16)"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;border-radius:12px;background:rgba(118,118,128,0.08)">
+              <div style="display:flex;flex-direction:column;gap:7px"><div style="width:46%;height:10px;border-radius:5px;background:rgba(118,118,128,0.16)"></div><div style="width:70%;height:14px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+              <div style="display:flex;flex-direction:column;gap:7px"><div style="width:30%;height:10px;border-radius:5px;background:rgba(118,118,128,0.16)"></div><div style="width:52%;height:14px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="width:28%;height:12px;border-radius:6px;background:rgba(118,118,128,0.16)"></div><div style="width:100%;height:13px;border-radius:6px;background:rgba(118,118,128,0.16)"></div><div style="width:76%;height:13px;border-radius:6px;background:rgba(118,118,128,0.16)"></div></div>
+          </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ showList }}" hint-placeholder-val="{{ true }}">
+    <div onScroll="{{ onPadScroll }}" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:8px 32px 48px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:0 4px">
+        <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+          <div style="font-size:34px;font-weight:700;line-height:41px;letter-spacing:0.4px;color:var(--labels-primary);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ teamName }}</div>
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">{{ countText }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;margin-bottom:3px">
+        <div style="position:relative;flex-shrink:0;min-width:0">
+          <div onClick="{{ toggleBundle }}" aria-label="Filter by bundle" style="height:34px;max-width:180px;padding:0 12px 0 10px;box-sizing:border-box;border-radius:100px;background:{{ bBg }};color:{{ bColor }};box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;align-items:center;gap:6px;cursor:pointer" style-active="transform:scale(0.96)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:block;flex-shrink:0"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>
+            <span style="font-size:15px;font-weight:600;letter-spacing:-0.24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bundleLabel }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:block;flex-shrink:0"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <sc-if value="{{ bundleOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:42px;right:0;z-index:30;width:300px;max-height:420px;overflow-y:auto;scrollbar-width:none;border-radius:24px;padding:6px;box-sizing:border-box;background:var(--zh-menu);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column">
+              <div style="padding:8px 14px 6px;font-size:13px;letter-spacing:-0.08px;color:var(--labels-secondary)">Bundle</div>
+              <sc-for list="{{ bundles }}" as="b" hint-placeholder-count="4">
+                <div onClick="{{ b.pick }}" style="min-height:44px;padding:7px 14px;box-sizing:border-box;border-radius:14px;display:flex;align-items:center;gap:12px;cursor:pointer" style-hover="background:rgba(118,118,128,0.12)">
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px">
+                    <span style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.name }}</span>
+                    <sc-if value="{{ b.hasId }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.id }}</span></sc-if>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;opacity:{{ b.check }}"><path d="M3 8.5l3.2 3L13 4.5" stroke="var(--zh-primary-label)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <div style="width:300px;flex-shrink:0;height:32px;border-radius:100px;background:rgba(118,118,128,0.12);padding:2px;box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr;margin-bottom:4px">
+          <div onClick="{{ segMine }}" style="border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-0.08px;color:var(--labels-primary);cursor:pointer;background:{{ s0bg }};box-shadow:{{ s0sh }};font-weight:{{ s0w }}">My Application</div>
+          <div onClick="{{ segShared }}" style="border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-0.08px;color:var(--labels-primary);cursor:pointer;background:{{ s1bg }};box-shadow:{{ s1sh }};font-weight:{{ s1w }}">Shared with me</div>
+        </div>
+        </div>
+      </div>
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:10px"><sc-if value="{{ pinCapsule }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;top:0;height:0;z-index:3;margin-bottom:-10px;display:flex;justify-content:center;pointer-events:none">
+          <div style="margin-top:4px;height:36px;padding:0 18px;border-radius:100px;box-sizing:border-box;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;font-size:15px;font-weight:600;letter-spacing:-0.24px;color:var(--labels-primary);white-space:nowrap;opacity:{{ g.capOp }};transform:{{ g.capTf }};transition:opacity 0.2s ease, transform 0.3s cubic-bezier(0.2,0.8,0.2,1)">{{ g.title }}</div>
+        </div>
+        <div data-gh="1" style="font-size:22px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary);padding:8px 4px 0">{{ g.title }}</div>
+      </sc-if>
+      <sc-if value="{{ pinBar }}" hint-placeholder-val="{{ false }}"><div style="position:sticky;top:-8px;z-index:3;background:color-mix(in srgb, var(--zh-system-bg) 82%, transparent);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);margin:-8px -32px -6px;padding:16px 36px 6px;font-size:22px;font-weight:600;line-height:25px;letter-spacing:0.38px;color:var(--labels-primary)">{{ g.title }}</div></sc-if><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">
+        <sc-for list="{{ g.items }}" as="a" hint-placeholder-count="3">
+          <div onClick="{{ a.open }}" onContextMenu="{{ a.onCtx }}" onPointerDown="{{ a.onDown }}" onPointerUp="{{ cancelPress }}" onPointerLeave="{{ cancelPress }}" style="background:var(--zh-card);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:14px;cursor:pointer;position:relative;z-index:{{ a.z }};transform:{{ a.tf }};box-shadow:{{ a.sh }};transition:transform 0.25s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.25s;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:52px;height:52px;flex-shrink:0;border-radius:12px;background:{{ a.logoBg }};display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,0.08)">{{ a.initials }}</div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;align-self:center">
+                <div style="font-size:17px;font-weight:600;line-height:22px;letter-spacing:-0.41px;color:var(--labels-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div>
+                <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">{{ a.version }}</div>
+                <sc-if value="{{ a.expired }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-top:4px;height:22px;padding:0 9px;border-radius:100px;background:color-mix(in srgb, var(--accents-red) 14%, transparent);color:color-mix(in oklch, var(--accents-red) 72%, var(--labels-primary));font-size:12px;font-weight:600;display:flex;align-items:center;white-space:nowrap">Profile expired</span></sc-if>
+              </div>
+              <div title="{{ a.platform }}" aria-label="{{ a.platform }}" style="flex-shrink:0;align-self:flex-start;color:var(--labels-secondary)">
+                <sc-if value="{{ a.icoIosF }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(7.375 4.46) scale(1.7)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" fill="currentColor"></path></svg></sc-if>
+                <sc-if value="{{ a.icoAndF }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><path fill-rule="evenodd" d="M10.1 12.4A7.95 7.95 0 0 1 26 12.4Z M15 8.2a1.1 1.1 0 1 0 0.01 0Z M21.1 8.2a1.1 1.1 0 1 0 0.01 0Z" fill="currentColor"></path><path d="M10.1 13.6H26V25.4a1.2 1.2 0 0 1-1.2 1.2H11.3a1.2 1.2 0 0 1-1.2-1.2Z" fill="currentColor"></path><rect x="13" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="19.3" y="24" width="3.8" height="8.9" rx="1.9" fill="currentColor"></rect><rect x="5.2" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><rect x="27.1" y="13.4" width="3.8" height="11" rx="1.9" fill="currentColor"></rect><path d="M13.6 5L12.4 3.3M22.5 5L23.7 3.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if>
+                <sc-if value="{{ a.icoMacF }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><defs><clipPath id="zhFinderClip"><rect x="2.5" y="5.5" width="31" height="25.5" rx="9"></rect></clipPath><linearGradient id="zhFinderL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46B9FF"></stop><stop offset="1" stop-color="#1673F0"></stop></linearGradient><linearGradient id="zhFinderR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2F9FF"></stop><stop offset="1" stop-color="#CFE8FF"></stop></linearGradient></defs><g clip-path="url(#zhFinderClip)"><rect x="2.5" y="5.5" width="31" height="25.5" fill="url(#zhFinderR)"></rect><path d="M2 5H21.7L13.98 16.25C13.78 16.55 13.99 16.96 14.36 16.96H18.3C18.55 16.96 18.75 17.16 18.75 17.41V31.5H2Z" fill="url(#zhFinderL)"></path></g><path d="M25.3667 23C19.7838 25.4185 16.5587 25.3636 10.6035 23" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M25.3672 11.9997V15.355" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path><path d="M10.6035 12.258V15.6132" stroke="#1B2E4B" stroke-width="2" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ a.icoIosS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><path transform="translate(8 5.25) scale(1.6)" d="M9.3457 3.64258C8.10547 3.55469 7.04102 4.3457 6.46484 4.3457C5.86914 4.3457 4.95117 3.67188 3.96484 3.69141C2.68555 3.70117 1.51367 4.43359 0.839844 5.57617C-0.478516 7.88086 0.517578 11.3086 1.80664 13.1738C2.43164 14.1016 3.19336 15.127 4.18945 15.0977C5.13672 15.0488 5.49805 14.4727 6.66016 14.4727C7.82227 14.4727 8.13477 15.0977 9.14062 15.0684C10.1855 15.0488 10.8203 14.1406 11.4648 13.2227C12.1875 12.1484 12.4902 11.123 12.5 11.0645C12.4707 11.0645 10.498 10.3027 10.4785 8.01758C10.4688 6.11328 12.041 5.18555 12.0996 5.14648C11.2109 3.83789 9.82422 3.69141 9.3457 3.64258ZM8.57422 2.41211C9.10156 1.76758 9.45312 0.888672 9.36523 0C8.60352 0.0292969 7.68555 0.507812 7.13867 1.14258C6.66016 1.70898 6.23047 2.61719 6.34766 3.47656C7.19727 3.53516 8.05664 3.04688 8.57422 2.41211Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path></svg></sc-if><sc-if value="{{ a.icoAndS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:#3DDC84"><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11.2 13A6.8 6.8 0 0 1 24.8 13Z"></path><path d="M11.2 16.2H24.8V24.2a1.6 1.6 0 0 1-1.6 1.6H12.8a1.6 1.6 0 0 1-1.6-1.6Z"></path><path d="M15.2 26V31M20.8 26V31M7 16.4V23.4M29 16.4V23.4M14 7.5L12.6 5.2M22 7.5L23.4 5.2"></path></g><circle cx="15.4" cy="10.6" r="1.1" fill="currentColor"></circle><circle cx="20.6" cy="10.6" r="1.1" fill="currentColor"></circle></svg></sc-if><sc-if value="{{ a.icoMacS }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 36 36" fill="none" style="display:block;color:var(--labels-primary)"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6.5" width="28" height="23.5" rx="7.5"></rect><path d="M20.8 6.5L14.5 15.8C14.2 16.3 14.5 16.9 15 16.9H18.2C18.5 16.9 18.8 17.2 18.8 17.5V30"></path><path d="M25.4 23C19.8 25.4 16.6 25.4 10.6 23"></path><path d="M25.4 12V15.4M10.6 12V15.4"></path></g></svg></sc-if>
+              </div>
+            </div>
+            <sc-if value="{{ a.shared }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px;margin-top:-2px">
+                <span style="width:24px;height:24px;flex-shrink:0;border-radius:100px;background:{{ a.sharerBg }};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">{{ a.sharerInitials }}</span>
+                <span style="font-size:13px;line-height:18px;letter-spacing:-0.08px;color:var(--labels-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Shared by <span style="font-weight:600;color:var(--labels-primary)">{{ a.sharedBy }}</span></span>
+              </div>
+            </sc-if>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(118,118,128,0.08)">
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--labels-secondary)">Created</span><span style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--labels-primary)">{{ a.date }}</span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--labels-secondary)">Size</span><span style="font-size:15px;font-weight:500;letter-spacing:-0.24px;color:var(--labels-primary)">{{ a.size }}</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:13px;font-weight:600;letter-spacing:-0.08px;color:var(--labels-primary)">What's new</span>
+              <span style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ a.notes }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div></div></sc-for>
+    </div>
+    </sc-if>
+  </sc-if>
+  <div style="position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;pointer-events:none;z-index:6">
+    <x-import component-from-global-scope="ZhareHubDesignSystem_d00ac0.HomeIndicator" device="{{ hiDevice }}" orientation="{{ hiOrientation }}" hint-size="400px,34px"></x-import>
+  </div>
+  <sc-if value="{{ showNoResults }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;top:{{ nrTop }};bottom:{{ errBottom }};z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px;box-sizing:border-box;pointer-events:none">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" style="display:block"><circle cx="10.5" cy="10.5" r="6.5" stroke="var(--labels-tertiary)" stroke-width="1.8"></circle><path d="M15.5 15.5L20 20" stroke="var(--labels-tertiary)" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:6px;text-align:center">
+        <div style="font-size:22px;font-weight:700;line-height:28px;letter-spacing:-0.26px;color:var(--labels-primary);overflow-wrap:anywhere">No results for “{{ q }}”</div>
+        <div style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-secondary);text-wrap:pretty">Check the spelling or try a different application name.</div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;top:{{ errTop }};bottom:{{ errBottom }};z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0 32px;box-sizing:border-box">
+      <div style="width:100%;max-width:{{ illW }};aspect-ratio:4/3">
+        <img src="{{ errImg }}" alt="" style="width:100%;height:100%;display:block;object-fit:contain">
+      </div>
+      <div style="width:100%;max-width:360px;display:flex;flex-direction:column;gap:8px;text-align:center">
+        <div style="font-size:22px;font-weight:700;line-height:28px;letter-spacing:-0.26px;color:var(--labels-primary);text-wrap:pretty">{{ errTitle }}</div>
+        <div style="font-size:17px;line-height:22px;letter-spacing:-0.41px;color:var(--labels-secondary);text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ errMsg }}</div>
+      </div>
+      <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:12px">
+        <div onClick="{{ primaryAct }}" style="height:54px;border-radius:100px;background:color-mix(in srgb, var(--zh-primary) 95%, transparent);backdrop-filter:blur(7px) saturate(180%);-webkit-backdrop-filter:blur(7px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px rgba(255,255,255,0.4),inset 0 0 0 0.5px rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer" style-active="opacity:0.85;transform:scale(0.98)">
+          <sc-if value="{{ retrying }}" hint-placeholder-val="{{ false }}">{{ spinner }}</sc-if>
+          <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:#fff">{{ primaryLabel }}</span>
+        </div>
+        <sc-if value="{{ hasSecondary }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ askLogout }}" style="height:54px;border-radius:100px;background:var(--zh-bar);backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%);box-shadow:0 8px 40px rgba(0,0,0,0.12),inset 0 1px 1px var(--zh-glass-hi),inset 0 0 0 0.5px var(--zh-glass-edge);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(0.98)">
+            <span style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--zh-primary-label)">Log Out</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ anyMenu }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:absolute;inset:0;z-index:20"></div>
+  </sc-if>
+  <sc-if value="{{ ctxOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCtx }}" onContextMenu="{{ closeCtx }}" style="position:absolute;inset:0;z-index:40;background:rgba(0,0,0,0.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"></div>
+    <div style="position:absolute;z-index:50;left:{{ ctxX }}px;top:{{ ctxY }}px;width:250px;border-radius:24px;padding:6px;box-sizing:border-box;background:var(--zh-menu);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column">
+      <sc-if value="{{ ctxCanShare }}" hint-placeholder-val="{{ true }}">
+        <div onClick="{{ shareApp }}" style="height:44px;border-radius:14px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;cursor:{{ ctxShareCur }};color:{{ ctxShareInk }}" style-hover="background:rgba(118,118,128,0.12)">
+          <span style="font-size:17px;letter-spacing:-0.41px">Share</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M8 7l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+        </div>
+      </sc-if>
+      <div onClick="{{ deleteApp }}" style="height:44px;border-radius:14px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;color:var(--accents-red)" style-hover="background:rgba(118,118,128,0.12)">
+        <span style="font-size:17px;letter-spacing:-0.41px">Delete</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 11v6M14 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ confirmingOut }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cancelOut }}" style="position:absolute;inset:0;z-index:70;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0 46px">
+      <div onClick="{{ stopProp }}" style="width:100%;max-width:300px;border-radius:34px;padding:22px 16px 16px;box-sizing:border-box;background:color-mix(in srgb, var(--backgrounds-primary) 88%, transparent);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 100px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:18px;font-family:'SF Pro',-apple-system,system-ui,sans-serif">
+        <div style="display:flex;flex-direction:column;gap:6px;text-align:center;padding:0 8px">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.41px;color:var(--labels-primary)">Log out of ZhareHub?</div>
+          <div style="font-size:15px;line-height:20px;letter-spacing:-0.24px;color:var(--labels-secondary)">You can sign in again with another account.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px">
+          <div onClick="{{ cancelOut }}" style="height:48px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;color:var(--labels-primary);cursor:pointer" style-active="opacity:0.7">Cancel</div>
+          <div onClick="{{ doLogout }}" style="height:48px;border-radius:100px;background:var(--fills-tertiary);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:var(--accents-red);cursor:pointer" style-active="opacity:0.7">Log Out</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ loggedOut }}" hint-placeholder-val="{{ false }}">
+    <dc-import name="LoginScreen" device="{{ deviceName }}" appearance="{{ appearanceName }}" style="position:absolute;inset:0;z-index:80" hint-size="100%,100%"></dc-import>
+  </sc-if>
+  <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+    <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" app="{{ detailApp }}" device="{{ deviceName }}" appearance="{{ appearanceName }}" on-back="{{ closeDetail }}" on-delete="{{ deleteFromDetail }}" style="position:absolute;inset:0;z-index:60" hint-size="100%,100%"></dc-import>
+  </sc-if>
+  <sc-if value="{{ settingsOpen }}" hint-placeholder-val="{{ false }}">
+    <dc-import name="SettingsScreen" device="{{ deviceName }}" appearance="{{ appearanceName }}" on-tab="{{ onSettingsTab }}" style="position:absolute;inset:0;z-index:65" hint-size="100%,100%"></dc-import>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:874},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;iPhone&quot;,&quot;iPad&quot;],&quot;default&quot;:&quot;iPhone&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;appearance&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Light&quot;,&quot;Dark&quot;],&quot;default&quot;:&quot;Light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;loading&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;error&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;None&quot;,&quot;Network&quot;,&quot;Fetch failed&quot;,&quot;Auth token&quot;,&quot;Unknown&quot;],&quot;default&quot;:&quot;None&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;query&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;searchLoading&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;pinnedHeader&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Capsule&quot;,&quot;Bar&quot;],&quot;default&quot;:&quot;Capsule&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;logoStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Filled&quot;,&quot;Stroke&quot;],&quot;default&quot;:&quot;Filled&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const APPS = [
+  { name: 'Zylker Field', team: 0, shared: false, ver: '1.0.0', code: '1000', date: '2026-10-19', size: '14.0 MB', c: 'blue', notes: 'Offline sync for field reports, faster photo uploads, and a redesigned checklist with drag-to-reorder.' },
+  { name: 'Delivery Hub', team: 0, shared: false, ver: '3.3.1', code: '3031', date: '2026-10-19', size: '17.7 MB', c: 'orange', notes: 'Split payments across cards and cash, receipt reprint from history, and barcode fixes on older devices.' },
+  { name: 'Pulse Chat', team: 0, shared: false, ver: '5.6.2', code: '5062', date: '2026-10-19', size: '21.4 MB', c: 'green', notes: 'Low-stock alerts per warehouse, CSV import for bulk updates, and better search across SKUs.' },
+  { name: 'Retail POS', team: 0, shared: false, ver: '2.9.3', code: '2093', date: '2026-10-18', size: '25.1 MB', c: 'teal', notes: 'New ticket timeline, canned replies with variables, and push notifications for SLA breaches.' },
+  { name: 'Ticket Scan', team: 0, shared: false, ver: '4.12.0', code: '4120', date: '2026-10-18', size: '28.8 MB', c: 'indigo', notes: 'Live map with ETA, proof-of-delivery signatures, and battery improvements on long sessions.' },
+  { name: 'Inventory Pro', team: 0, shared: false, ver: '1.0.1', code: '1001', date: '2026-10-17', size: '32.5 MB', c: 'pink', notes: 'Dark mode support, larger tap targets, and a cleaner settings screen with search.' },
+  { name: 'Fleet Track', team: 0, shared: false, ver: '3.3.2', code: '3032', date: '2026-10-17', size: '36.2 MB', c: 'red', notes: 'Faster app launch, smaller download size, and crash fixes reported in the previous build.' },
+  { name: 'Meal Order', team: 0, shared: false, ver: '5.6.3', code: '5063', date: '2026-10-16', size: '39.9 MB', c: 'purple', notes: 'Sign in with passkeys, biometric lock for sensitive screens, and session timeout controls.' },
+  { name: 'Visitor Pass', team: 0, shared: false, ver: '2.9.0', code: '2090', date: '2026-10-16', size: '43.6 MB', c: 'cyan', notes: 'Home screen widgets, Siri shortcuts for common actions, and improved VoiceOver labels.' },
+  { name: 'Time Clock', team: 0, shared: false, ver: '4.12.1', code: '4121', date: '2026-10-15', size: '47.3 MB', c: 'mint', notes: 'Bulk actions on lists, swipe to archive, and undo for accidental deletes.' },
+  { name: 'Leave Desk', team: 0, shared: false, ver: '1.0.2', code: '1002', date: '2026-10-14', size: '51.0 MB', c: 'brown', notes: 'Export to PDF and CSV, scheduled reports by email, and filters saved per user.' },
+  { name: 'Quote Builder', team: 0, shared: false, ver: '3.3.3', code: '3033', date: '2026-10-14', size: '54.7 MB', c: 'yellow', notes: 'Localized into 12 languages, right-to-left layout fixes, and regional date formats.' },
+  { name: 'Site Inspect', team: 0, shared: false, ver: '5.6.0', code: '5060', date: '2026-10-13', size: '58.4 MB', c: 'blue', notes: 'Offline sync for field reports, faster photo uploads, and a redesigned checklist with drag-to-reorder.' },
+  { name: 'Asset Audit', team: 0, shared: false, ver: '2.9.1', code: '2091', date: '2026-10-12', size: '62.1 MB', c: 'orange', notes: 'Split payments across cards and cash, receipt reprint from history, and barcode fixes on older devices.' },
+  { name: 'Service Desk', team: 0, shared: false, ver: '4.12.2', code: '4122', date: '2026-10-11', size: '65.8 MB', c: 'green', notes: 'Low-stock alerts per warehouse, CSV import for bulk updates, and better search across SKUs.' },
+  { name: 'Event Check-in', team: 0, shared: false, ver: '1.0.3', code: '1003', date: '2026-10-10', size: '69.5 MB', c: 'teal', notes: 'New ticket timeline, canned replies with variables, and push notifications for SLA breaches.' },
+  { name: 'Parking Pass', team: 0, shared: false, ver: '3.3.0', code: '3030', date: '2026-10-09', size: '73.2 MB', c: 'indigo', notes: 'Live map with ETA, proof-of-delivery signatures, and battery improvements on long sessions.' },
+  { name: 'Survey Kit', team: 0, shared: false, ver: '5.6.1', code: '5061', date: '2026-10-08', size: '14.9 MB', c: 'pink', notes: 'Dark mode support, larger tap targets, and a cleaner settings screen with search.' },
+  { name: 'Book Room', team: 0, shared: false, ver: '2.9.2', code: '2092', date: '2026-10-07', size: '18.6 MB', c: 'red', notes: 'Faster app launch, smaller download size, and crash fixes reported in the previous build.' },
+  { name: 'Cash Count', team: 0, shared: false, ver: '4.12.3', code: '4123', date: '2026-10-05', size: '22.3 MB', c: 'purple', notes: 'Sign in with passkeys, biometric lock for sensitive screens, and session timeout controls.' },
+  { name: 'Patient Intake', team: 0, shared: false, ver: '1.0.0', code: '1000', date: '2026-10-04', size: '26.0 MB', c: 'cyan', notes: 'Home screen widgets, Siri shortcuts for common actions, and improved VoiceOver labels.' },
+  { name: 'Warranty Hub', team: 0, shared: false, ver: '3.3.1', code: '3031', date: '2026-10-02', size: '29.7 MB', c: 'mint', notes: 'Bulk actions on lists, swipe to archive, and undo for accidental deletes.' },
+  { name: 'Lead Capture', team: 0, shared: false, ver: '5.6.2', code: '5062', date: '2026-10-01', size: '33.4 MB', c: 'brown', notes: 'Export to PDF and CSV, scheduled reports by email, and filters saved per user.' },
+  { name: 'Order Desk', team: 0, shared: false, ver: '2.9.3', code: '2093', date: '2026-09-28', size: '37.1 MB', c: 'yellow', notes: 'Localized into 12 languages, right-to-left layout fixes, and regional date formats.' },
+  { name: 'Price Check', team: 0, shared: false, ver: '4.12.0', code: '4120', date: '2026-09-22', size: '40.8 MB', c: 'blue', notes: 'Offline sync for field reports, faster photo uploads, and a redesigned checklist with drag-to-reorder.' },
+  { name: 'Route Plan', team: 0, shared: false, ver: '1.0.1', code: '1001', date: '2026-09-15', size: '44.5 MB', c: 'orange', notes: 'Split payments across cards and cash, receipt reprint from history, and barcode fixes on older devices.' },
+  { name: 'Doc Sign', team: 0, shared: false, ver: '3.3.2', code: '3032', date: '2026-09-03', size: '48.2 MB', c: 'green', notes: 'Low-stock alerts per warehouse, CSV import for bulk updates, and better search across SKUs.' },
+  { name: 'Help Center', team: 0, shared: false, ver: '5.6.3', code: '5063', date: '2026-08-27', size: '51.9 MB', c: 'teal', notes: 'New ticket timeline, canned replies with variables, and push notifications for SLA breaches.' },
+  { name: 'Gym Pass', team: 0, shared: false, ver: '2.9.0', code: '2090', date: '2026-08-14', size: '55.6 MB', c: 'indigo', notes: 'Live map with ETA, proof-of-delivery signatures, and battery improvements on long sessions.' },
+  { name: 'Library Lend', team: 0, shared: false, ver: '4.12.1', code: '4121', date: '2026-07-30', size: '59.3 MB', c: 'pink', notes: 'Dark mode support, larger tap targets, and a cleaner settings screen with search.' },
+  { name: 'Farm Log', team: 0, shared: false, ver: '1.0.2', code: '1002', date: '2026-07-11', size: '63.0 MB', c: 'red', notes: 'Faster app launch, smaller download size, and crash fixes reported in the previous build.' },
+  { name: 'Lab Results', team: 0, shared: false, ver: '3.3.3', code: '3033', date: '2026-06-24', size: '66.7 MB', c: 'purple', notes: 'Sign in with passkeys, biometric lock for sensitive screens, and session timeout controls.' },
+  { name: 'Tour Guide', team: 0, shared: false, ver: '5.6.0', code: '5060', date: '2026-06-02', size: '70.4 MB', c: 'cyan', notes: 'Home screen widgets, Siri shortcuts for common actions, and improved VoiceOver labels.' },
+  { name: 'Menu Board', team: 0, shared: false, ver: '2.9.1', code: '2091', date: '2026-05-19', size: '74.1 MB', c: 'mint', notes: 'Bulk actions on lists, swipe to archive, and undo for accidental deletes.' },
+  { name: 'Kiosk Mode', team: 0, shared: false, ver: '4.12.2', code: '4122', date: '2026-04-08', size: '15.8 MB', c: 'brown', notes: 'Export to PDF and CSV, scheduled reports by email, and filters saved per user.' },
+  { name: 'Field Notes', expired: true, team: 0, shared: false, ver: '1.0.3', code: '1003', date: '2026-03-16', size: '19.5 MB', c: 'yellow', notes: 'Localized into 12 languages, right-to-left layout fixes, and regional date formats.' },
+  { name: 'Bill Pay', expired: true, team: 0, shared: false, ver: '3.3.0', code: '3030', date: '2026-02-20', size: '23.2 MB', c: 'blue', notes: 'Offline sync for field reports, faster photo uploads, and a redesigned checklist with drag-to-reorder.' },
+  { name: 'Recall Alert', expired: true, team: 0, shared: false, ver: '5.6.1', code: '5061', date: '2026-01-12', size: '26.9 MB', c: 'orange', notes: 'Split payments across cards and cash, receipt reprint from history, and barcode fixes on older devices.' },
+  { name: 'Delivery Tracker', team: 0, shared: true, sharedBy: 'Priya Sharma', sc: 'orange', ver: '4.0.2', code: '402', date: '2026-10-19', size: '71.4 MB', c: 'indigo', notes: 'Live route map with driver ETA, proof-of-delivery signatures, and battery improvements on long shifts.' },
+  { name: 'Expense Snap', team: 0, shared: true, sharedBy: 'Daniel Ortiz', sc: 'green', ver: '2.1.0', code: '210', date: '2026-10-02', size: '22.7 MB', c: 'pink', notes: 'Scan receipts in batches, auto-detect currency, and submit reports for approval without leaving the app.' },
+  { name: 'Store Locator', team: 1, shared: false, ver: '1.3.4', code: '134', date: '2026-10-18', size: '18.5 MB', c: 'red', notes: 'Store hours now include holidays, directions open in Maps, and faster loading on slow networks.' },
+  { name: 'Loyalty Card', team: 1, shared: false, ver: '2.0.0', code: '200', date: '2026-09-18', size: '27.1 MB', c: 'purple', notes: 'Wallet pass support, tiered rewards, and a new points history view with filters by store.' },
+  { name: 'Shift Planner', team: 1, shared: true, sharedBy: 'Mei Chen', sc: 'purple', ver: '1.9.2', code: '192', date: '2026-10-15', size: '30.8 MB', c: 'cyan', notes: 'Swap shifts with teammates, availability reminders, and a weekly overview widget.' },
+  { name: 'Design Review', team: 2, shared: false, ver: '0.9.0', code: '90', date: '2026-10-12', size: '15.3 MB', c: 'mint', notes: 'Comment pins on screenshots, version compare slider, and export of review notes as PDF.' },
+  { name: 'Brand Kit', expired: true, team: 2, shared: true, sharedBy: 'Arjun Rao', sc: 'teal', ver: '1.1.0', code: '110', date: '2026-08-29', size: '64.0 MB', c: 'brown', notes: 'Logo downloads in every format, color palette copy, and typography specimens for each product.' },
+];
+const TODAY = new Date(2026, 9, 19);
+const DAY = 86400000;
+const GROUPS = ['Today', 'Yesterday', 'This Week', 'This Month', 'This Year', 'Earlier'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const parse = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
+const bucket = dt => {
+  const diff = Math.round((TODAY - dt) / DAY);
+  if (diff <= 0) return 0;
+  if (diff === 1) return 1;
+  if (diff < 7) return 2;
+  if (dt.getMonth() === TODAY.getMonth() && dt.getFullYear() === TODAY.getFullYear()) return 3;
+  if (dt.getFullYear() === TODAY.getFullYear()) return 4;
+  return 5;
+};
+APPS.forEach((a, i) => { a.android = i % 3 === 1; a.mac = !a.android && i % 4 === 3; a.bid = 'com.zylker.' + ['', 'retail.', 'designlab.'][a.team] + a.name.toLowerCase().replace(/[^a-z0-9]+/g, ''); });
+const TEAMS = ['Zylker Mobile', 'Zylker Retail', 'Design Lab'];
+const ERR_KEY = { 'Network': 'net', 'Fetch failed': 'fetch', 'Auth token': 'auth', 'Unknown': 'unk' };
+const ERRORS = {
+  net: { title: 'No internet connection', msg: 'Check your Wi-Fi or mobile data connection, then try again.', retry: true, logout: false },
+  fetch: { title: 'Couldn’t load applications', msg: 'We couldn’t fetch your applications from ZhareHub. Please try again.', retry: true, logout: false },
+  auth: { title: 'Your session has expired', msg: 'For your security, log out and sign in again to continue.', retry: false, logout: true },
+  unk: { title: 'Something went wrong', msg: 'An unexpected error occurred. Try again, or log out if it keeps happening.', retry: true, logout: true },
+};
+class Component extends DCLogic {
+  state = { pinG: -1, seg: 0, team: 0, menu: false, bmenu: false, bundle: null, compact: false, ctx: null, deleted: [], detail: null, err: ERR_KEY[this.props.error] || null, retrying: false, out: null, loading: !!this.props.loading, sActive: !!this.props.query, q: this.props.query || '', sLoading: !!this.props.searchLoading };
+  phoneInput = React.createRef();
+  padInput = React.createRef();
+  rootRef = React.createRef();
+  componentWillUnmount() { clearTimeout(this.lp); clearTimeout(this.rt); clearTimeout(this.st); }
+  componentDidUpdate(p) { if (p.query !== this.props.query || p.searchLoading !== this.props.searchLoading) this.setState({ sActive: !!this.props.query, q: this.props.query || '', sLoading: !!this.props.searchLoading }); if (p.loading !== this.props.loading) this.setState({ loading: !!this.props.loading }); if (p.error !== this.props.error) { clearTimeout(this.rt); this.setState({ err: ERR_KEY[this.props.error] || null, retrying: false }); } }
+  openCtx(el, a) {
+    const root = this.rootRef.current; if (!root || !el) return;
+    const rr = root.getBoundingClientRect(), r = el.getBoundingClientRect();
+    const k = root.offsetWidth / rr.width, H = root.offsetHeight, W = root.offsetWidth;
+    const menuH = (a.shared ? 1 : 2) * 44 + 12;
+    let top = (r.bottom - rr.top) * k + 10;
+    if (top + menuH > H - 110) top = (r.top - rr.top) * k - 10 - menuH;
+    top = Math.max(70, Math.min(top, H - menuH - 40));
+    const left = Math.min(Math.max(12, (r.left - rr.left) * k), W - 262);
+    this.setState({ ctx: { name: a.name, shared: a.shared, expired: !!a.expired, x: Math.round(left), y: Math.round(top) }, menu: false });
+  }
+  pinnedIdx(el) { const top = el.getBoundingClientRect().top; let p = -1; el.querySelectorAll('[data-gh]').forEach((h, i) => { if (h.getBoundingClientRect().bottom <= top + 4) p = i; }); return p; }
+  renderVals() {
+    const dark = this.props.appearance === 'Dark';
+    const pad = this.props.device === 'iPad';
+    const pinStyle = this.props.pinnedHeader ?? 'Capsule';
+    const { seg, team, menu, ctx } = this.state;
+    const ql = this.state.q.trim().toLowerCase();
+    const base = APPS.filter(a => a.team === team && a.shared === (seg === 1) && !this.state.deleted.includes(a.name));
+    const bmap = new Map(); base.forEach(a => { if (!bmap.has(a.bid)) bmap.set(a.bid, a.name); });
+    const selB = bmap.has(this.state.bundle) ? this.state.bundle : null;
+    const pickB = id => this.setState({ bundle: id, bmenu: false });
+    const bundles = [{ name: 'All', id: '', hasId: false, check: selB ? 0 : 1, pick: () => pickB(null) }].concat([...bmap].sort((x, y) => x[1].localeCompare(y[1])).map(([id, name]) => ({ name, id, hasId: true, check: id === selB ? 1 : 0, pick: () => pickB(id) })));
+    const stroke = this.props.logoStyle === 'Stroke';
+    const apps = base.filter(a => (!selB || a.bid === selB) && (!ql || a.name.toLowerCase().includes(ql))).map(a => ({ ...a, dt: parse(a.date) })).sort((x, y) => y.dt - x.dt).map(a => ({
+      ...a,
+      date: MONTHS[a.dt.getMonth()] + ' ' + a.dt.getDate() + ', ' + a.dt.getFullYear(),
+      group: bucket(a.dt),
+      platform: a.android ? 'Android' : a.mac ? 'macOS' : 'iOS', isIOS: !a.android && !a.mac, isAndroid: !!a.android, isMac: !!a.mac, icoIosF: !a.android && !a.mac && !stroke, icoAndF: !!a.android && !stroke, icoMacF: !!a.mac && !stroke, icoIosS: !a.android && !a.mac && stroke, icoAndS: !!a.android && stroke, icoMacS: !!a.mac && stroke,
+      z: ctx && ctx.name === a.name ? 45 : 'auto',
+      tf: ctx && ctx.name === a.name ? 'scale(1.02)' : 'none',
+      sh: ctx && ctx.name === a.name ? '0 20px 60px rgba(0,0,0,0.25)' : 'none',
+      onCtx: e => { e.preventDefault(); clearTimeout(this.lp); this.openCtx(e.currentTarget, a); },
+      onDown: e => { this.lpFired = false; if (e.button === 2) return; const el = e.currentTarget; clearTimeout(this.lp); this.lp = setTimeout(() => { this.lpFired = true; this.openCtx(el, a); }, 500); },
+      open: () => { clearTimeout(this.lp); if (this.lpFired || this.state.ctx) { this.lpFired = false; return; } this.setState({ detail: a.name, menu: false }); },
+      sharerBg: 'var(--accents-' + (a.sc || 'gray') + ')',
+      sharerInitials: (a.sharedBy || '').split(' ').map(w => w[0]).join('').slice(0, 2),
+      version: 'Version ' + a.ver + ' (' + a.code + ')',
+      logoBg: 'var(--accents-' + a.c + ')',
+      initials: a.name.split(' ').map(w => w[0]).join('').slice(0, 2),
+    }));
+    const on = { bg: 'var(--zh-seg-sel)', sh: '0 3px 8px rgba(0,0,0,0.12), 0 3px 1px rgba(0,0,0,0.04)', w: 600 };
+    const off = { bg: 'transparent', sh: 'none', w: 500 };
+    const s0 = seg === 0 ? on : off, s1 = seg === 1 ? on : off;
+    const err = this.state.err, E = err ? ERRORS[err] : null;
+    const busy = this.state.loading || (this.state.sLoading && !!ql);
+    const noRes = !E && !busy && !!ql && apps.length === 0;
+    const padOpen = this.state.sActive || !!this.state.q;
+    const retry = () => { this.setState({ err: null, loading: true }); clearTimeout(this.rt); this.rt = setTimeout(() => this.setState({ loading: false }), 1600); };
+    const askLogout = () => this.setState({ out: 'confirm' });
+    return {
+      logoStyle: this.props.logoStyle ?? 'Filled',
+      showList: !E && !busy && !noRes, showError: !!E, showSkeleton: !E && busy, showNoResults: noRes,
+      nrTop: pad ? '180px' : '200px',
+      searching: this.state.sActive, notSearching: !this.state.sActive,
+      q: this.state.q, hasQ: !!this.state.q,
+      phoneInput: this.phoneInput, padInput: this.padInput,
+      padExpanded: padOpen, padFieldW: padOpen ? '260px' : '44px', padFieldPad: padOpen ? '0 6px 0 14px' : '0 13px',
+      teamLabel: !padOpen, teamPad: padOpen ? '0 12px' : '0 16px 0 14px',
+      padOpenSearch: () => { if (this.state.sActive) return; this.setState({ sActive: true, menu: false }); setTimeout(() => { const r = this.padInput.current; if (r) r.focus({ preventScroll: true }); }, 30); },
+      padBlur: () => { if (!this.state.q) this.setState({ sActive: false }); },
+      onQ: e => { const v = e.target.value; this.setState({ q: v, sLoading: !!v.trim() }); clearTimeout(this.st); this.st = setTimeout(() => this.setState({ sLoading: false }), 650); },
+      clearQ: () => { clearTimeout(this.st); this.setState({ q: '', sLoading: false }); const r = (pad ? this.padInput : this.phoneInput).current; if (r) r.focus({ preventScroll: true }); },
+      openSearch: () => { this.setState({ sActive: true, menu: false }); setTimeout(() => { const r = this.phoneInput.current; if (r) r.focus({ preventScroll: true }); }, 30); },
+      exitSearch: () => { clearTimeout(this.st); this.setState({ sActive: false, q: '', sLoading: false }); },
+      skPhone: [{ w: '84px', items: [1, 2] }, { w: '112px', items: [1] }],
+      skPad: [{ w: '90px', items: [1, 2, 3] }, { w: '118px', items: [1, 2, 3] }],
+      errTop: pad ? '100px' : '116px', errBottom: pad ? '34px' : '110px', illW: pad ? '300px' : '240px',
+      isNet: err === 'net', isFetch: err === 'fetch', isAuth: err === 'auth', isUnk: err === 'unk',
+      errImg: err ? 'assets/ill_err_' + { net: 'network', fetch: 'fetch_failed', auth: 'auth_token', unk: 'unknown' }[err] + (dark ? '_dark' : '') + '.svg' : '', errTitle: E ? E.title : '', errMsg: E ? E.msg : '',
+      retrying: this.state.retrying,
+      spinner: React.createElement('span', { style: { width: 18, height: 18, borderRadius: 100, border: '2.5px solid rgba(255,255,255,0.35)', borderTopColor: '#fff', boxSizing: 'border-box', display: 'block', animation: 'zhspin 0.8s linear infinite' } }),
+      primaryLabel: E && E.retry ? (this.state.retrying ? 'Retrying…' : 'Retry') : 'Log Out',
+      primaryAct: E && E.retry ? retry : askLogout,
+      hasSecondary: !!(E && E.retry && E.logout),
+      askLogout,
+      confirmingOut: this.state.out === 'confirm', loggedOut: this.state.out === 'done',
+      cancelOut: () => this.setState({ out: null }), doLogout: () => this.setState({ out: 'done' }),
+      stopProp: e => e.stopPropagation(),
+      theme: dark ? 'dark' : '',
+      isPad: pad, isPhone: !pad, hiDevice: pad ? 'iPad' : 'iPhone', hiOrientation: pad ? 'landscape' : 'portrait',
+      pal: dark
+        ? { systemBg: '#1E1E1E', primary: '#2F80CC', label: '#7DB6EC', card: '#2A2A2A', bar: 'rgba(48,48,48,0.72)', tabSel: 'rgba(255,255,255,0.1)', glassHi: 'rgba(255,255,255,0.22)', glassEdge: 'rgba(255,255,255,0.14)', menu: 'rgba(44,44,46,0.9)', segSel: '#5A5A5E' }
+        : { systemBg: '#F7F7F7', primary: '#226DB4', label: '#226DB4', card: '#FFFFFF', bar: 'rgba(255,255,255,0.72)', tabSel: 'rgba(34,109,180,0.1)', glassHi: 'rgba(255,255,255,0.9)', glassEdge: 'rgba(0,0,0,0.08)', menu: 'rgba(255,255,255,0.88)', segSel: '#FFFFFF' },
+      s0bg: s0.bg, s0sh: s0.sh, s0w: s0.w, s1bg: s1.bg, s1sh: s1.sh, s1w: s1.w,
+      compactOpacity: this.state.compact ? 1 : 0,
+      compactTransform: this.state.compact ? 'scale(1)' : 'scale(0.85)',
+      compactPe: this.state.compact ? 'auto' : 'none',
+      c0bg: seg === 0 ? 'var(--zh-tab-sel)' : 'transparent', c0color: seg === 0 ? 'var(--zh-primary-label)' : 'var(--labels-primary)',
+      c1bg: seg === 1 ? 'var(--zh-tab-sel)' : 'transparent', c1color: seg === 1 ? 'var(--zh-primary-label)' : 'var(--labels-primary)',
+      onPadScroll: e => {
+        const el = e.currentTarget, c = el.scrollTop > 52, p = this.pinnedIdx(el);
+        if (c !== this.state.compact || p !== this.state.pinG) this.setState({ compact: c, pinG: p });
+      },
+      onPhoneScroll: e => { const p = this.pinnedIdx(e.currentTarget); if (p !== this.state.pinG) this.setState({ pinG: p }); },
+      pinCapsule: pinStyle === 'Capsule', pinBar: pinStyle !== 'Capsule',
+      rootRef: this.rootRef,
+      settingsOpen: !!this.state.settings,
+      goSettings: () => this.setState({ settings: true, menu: false }),
+      onSettingsTab: t => { if (t === 'apps') this.setState({ settings: false }); },
+      detailOpen: !!this.state.detail, detailApp: apps.find(x => x.name === this.state.detail) || null,
+      deviceName: pad ? 'iPad' : 'iPhone', appearanceName: dark ? 'Dark' : 'Light',
+      closeDetail: () => this.setState({ detail: null }),
+      deleteFromDetail: name => this.setState(st => ({ deleted: st.deleted.concat([name]), detail: null })),
+      cancelPress: () => clearTimeout(this.lp),
+      ctxOpen: !!ctx, ctxX: ctx ? ctx.x : 0, ctxY: ctx ? ctx.y : 0, ctxCanShare: !!ctx && !ctx.shared,
+      closeCtx: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ ctx: null }); },
+      shareApp: () => { if (ctx && ctx.expired) return; this.setState({ ctx: null }); },
+      ctxShareInk: ctx && ctx.expired ? 'var(--labels-tertiary)' : 'var(--labels-primary)', ctxShareCur: ctx && ctx.expired ? 'not-allowed' : 'pointer',
+      deleteApp: () => this.setState(st => ({ deleted: st.deleted.concat(st.ctx ? [st.ctx.name] : []), ctx: null })),
+      segMine: () => this.setState({ seg: 0 }),
+      segShared: () => this.setState({ seg: 1 }),
+      groups: GROUPS.map((title, i) => ({ title, items: apps.filter(a => a.group === i) })).filter(g => g.items.length).map((g, i) => ({ ...g, capOp: this.state.pinG === i ? 1 : 0, capTf: this.state.pinG === i ? 'scale(1)' : 'scale(0.85)' })),
+      teamName: TEAMS[team],
+      countText: ql ? apps.length + (apps.length === 1 ? ' result' : ' results') + ' for \u201c' + this.state.q.trim() + '\u201d' : apps.length + (apps.length === 1 ? ' application' : ' applications'),
+      menuOpen: menu, anyMenu: menu || this.state.bmenu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu, bmenu: false })),
+      closeMenu: () => this.setState({ menu: false, bmenu: false }),
+      bundles, bundleOpen: this.state.bmenu, bundleLabel: selB ? bmap.get(selB) : 'All',
+      bBg: selB ? 'var(--zh-tab-sel)' : 'var(--zh-card)', bColor: selB ? 'var(--zh-primary-label)' : 'var(--labels-primary)',
+      toggleBundle: () => this.setState(s => ({ bmenu: !s.bmenu, menu: false })),
+      teams: TEAMS.map((name, i) => ({ name, check: i === team ? 1 : 0, pick: () => this.setState({ team: i, menu: false }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/tokens/fig-tokens.css">
+<link rel="stylesheet" href="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/styles.css">
+<script src="_ds/zharehub-design-system-d00ac0e8-fa7a-4158-a219-3d949dd7849f/_ds_bundle.js"></script>
+<style>body{margin:0;background:#f0eee9;font-family:"Zoho Puvi","SF Pro",-apple-system,system-ui,sans-serif}a{color:var(--accents-red);text-decoration:none}a:hover{opacity:.8}</style>
+<style>@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Regular.ttf") format("truetype");font-weight:400;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Medium.ttf") format("truetype");font-weight:500;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Semibold.ttf") format("truetype");font-weight:600;font-display:swap}@font-face{font-family:"Zoho Puvi";src:url("assets/fonts/ZohoPuvi-Bold.ttf") format("truetype");font-weight:700;font-display:swap}</style>
+</helmet>
+<div style="padding:40px 44px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Login</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">iPhone and iPad, Light and Dark. Tap any button to run the sign-in flow.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;gap:10px;align-items:baseline"><div style="font-size:13px;font-weight:600;color:#1a1a1a">Brand colors</div><div style="font-size:12px;color:rgba(0,0,0,0.55)">Light · Dark</div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:8px;width:180px">
+        <div style="display:flex;border-radius:12px;overflow:hidden;height:64px;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><div style="flex:1;background:#226DB4"></div><div style="flex:1;background:#2F80CC"></div></div>
+        <div style="font-size:13px;font-weight:600;color:#1a1a1a">Primary</div>
+        <div style="display:flex;justify-content:space-between;font:11px ui-monospace,Menlo,monospace;color:rgba(0,0,0,0.55)"><span>#226DB4</span><span>#2F80CC</span></div>
+        <div style="font-size:12px;line-height:16px;color:rgba(0,0,0,0.55)">Filled buttons, white label</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;width:180px">
+        <div style="display:flex;border-radius:12px;overflow:hidden;height:64px;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><div style="flex:1;background:#226DB4"></div><div style="flex:1;background:#7DB6EC"></div></div>
+        <div style="font-size:13px;font-weight:600;color:#1a1a1a">Primary label</div>
+        <div style="display:flex;justify-content:space-between;font:11px ui-monospace,Menlo,monospace;color:rgba(0,0,0,0.55)"><span>#226DB4</span><span>#7DB6EC</span></div>
+        <div style="font-size:12px;line-height:16px;color:rgba(0,0,0,0.55)">Links and tinted text</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;width:180px">
+        <div style="display:flex;border-radius:12px;overflow:hidden;height:64px;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><div style="flex:1;background:#E5F1FD"></div><div style="flex:1;background:#1B3550"></div></div>
+        <div style="font-size:13px;font-weight:600;color:#1a1a1a">Secondary</div>
+        <div style="display:flex;justify-content:space-between;font:11px ui-monospace,Menlo,monospace;color:rgba(0,0,0,0.55)"><span>#E5F1FD</span><span>#1B3550</span></div>
+        <div style="font-size:12px;line-height:16px;color:rgba(0,0,0,0.55)">Tinted fills, borders</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;width:180px">
+        <div style="display:flex;border-radius:12px;overflow:hidden;height:64px;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><div style="flex:1;background:#F3F8FD"></div><div style="flex:1;background:#0F1E2E"></div></div>
+        <div style="font-size:13px;font-weight:600;color:#1a1a1a">Tertiary</div>
+        <div style="display:flex;justify-content:space-between;font:11px ui-monospace,Menlo,monospace;color:rgba(0,0,0,0.55)"><span>#F3F8FD</span><span>#0F1E2E</span></div>
+        <div style="font-size:12px;line-height:16px;color:rgba(0,0,0,0.55)">Subtle surfaces</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="LoginScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="LoginScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="LoginScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="LoginScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Loading profile</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Shown after sign-in while the organization and profile APIs load. Then the app opens the Application List, or No organization if the account has none.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="Loader iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="ProfileLoaderScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" auto-advance="{{ false }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="Loader iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="ProfileLoaderScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" auto-advance="{{ false }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="Loader iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="ProfileLoaderScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" auto-advance="{{ false }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="Loader iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="ProfileLoaderScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" auto-advance="{{ false }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · No organization</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Shown after sign-in when the account has no organization or team. Tap Log Out to run the flow.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="No Org iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="NoOrgScreen" style="width:100%;height:100%" device="iPhone" appearance="Light" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="No Org iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="NoOrgScreen" style="width:100%;height:100%" device="iPhone" appearance="Dark" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="No Org iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="NoOrgScreen" style="width:100%;height:100%" device="iPad" appearance="Light" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="No Org iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="NoOrgScreen" style="width:100%;height:100%" device="iPad" appearance="Dark" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Application List</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Switch between My Application and Shared with me, or change team from the team button.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="App List iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="App List iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="App List iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="App List iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Search</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Searches application names in the current tab, live as you type, keeping date groups. iPhone: the glass search button expands into a bottom search field; the Applications button on the left exits search. iPad: search field in the top bar.</div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Results · Light</div>
+      <div data-screen-label="Search Results iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" query="Check" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Results · Dark</div>
+      <div data-screen-label="Search Results iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" query="Check" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Loading · Light</div>
+      <div data-screen-label="Search Loading iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" query="Check" search-loading="{{ true }}" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · No results · Dark</div>
+      <div data-screen-label="Search No results iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" query="Zoom" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Results · Light</div>
+      <div data-screen-label="Search Results iPad Light" style="width: 1180px; height: 820px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a; margin: 12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width: 100%; height: 100%" device="iPad" appearance="Light" query="Check" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Loading · Dark</div>
+      <div data-screen-label="Search Loading iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" query="Check" search-loading="{{ true }}" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · No results · Light</div>
+      <div data-screen-label="Search No results iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" query="Zoom" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Application List Loading</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Skeleton cards shaped like the real application cards, pulsing while the list loads. Also shown after tapping Retry on an error screen.</div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Light</div>
+      <div data-screen-label="Loading iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" loading="{{ true }}" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Dark</div>
+      <div data-screen-label="Loading iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" loading="{{ true }}" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Light</div>
+      <div data-screen-label="Loading iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" loading="{{ true }}" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Dark</div>
+      <div data-screen-label="Loading iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" loading="{{ true }}" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Application List Errors</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Shown in place of the list when loading fails. Network and fetch errors offer Retry; an expired OAuth token offers Log Out; unknown errors offer both. Tap Retry to reload the list.</div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Network connection · Light</div>
+      <div data-screen-label="Error Network connection iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" error="Network" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Fetch failed · Light</div>
+      <div data-screen-label="Error Fetch failed iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" error="Fetch failed" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">OAuth token · Light</div>
+      <div data-screen-label="Error OAuth token iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" error="Auth token" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Unknown · Light</div>
+      <div data-screen-label="Error Unknown iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" error="Unknown" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Network connection · Dark</div>
+      <div data-screen-label="Error Network connection iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" error="Network" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Fetch failed · Dark</div>
+      <div data-screen-label="Error Fetch failed iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" error="Fetch failed" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">OAuth token · Dark</div>
+      <div data-screen-label="Error OAuth token iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" error="Auth token" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Unknown · Dark</div>
+      <div data-screen-label="Error Unknown iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" error="Unknown" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Network connection · Light</div>
+      <div data-screen-label="Error Network connection iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" error="Network" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · OAuth token · Dark</div>
+      <div data-screen-label="Error OAuth token iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" error="Auth token" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Fetch failed · Dark</div>
+      <div data-screen-label="Error Fetch failed iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" error="Fetch failed" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Unknown · Light</div>
+      <div data-screen-label="Error Unknown iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        
+      <dc-import name="AppListScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" error="Unknown" hint-size="1180px,820px"></dc-import></div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Application Detail</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">iOS apps show App Information, Provisioning Information and App Privacy. Android apps show App Information with signer and permissions. Tap Show All to manage members.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iOS · Light</div>
+        <div data-screen-label="Detail iPhone iOS Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" platform="iOS" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iOS · Dark</div>
+        <div data-screen-label="Detail iPhone iOS Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" platform="iOS" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Android · Light</div>
+        <div data-screen-label="Detail iPhone Android Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" platform="Android" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Android · Dark</div>
+        <div data-screen-label="Detail iPhone Android Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" platform="Android" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iOS · Light</div>
+        <div data-screen-label="Detail iPad iOS Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" platform="iOS" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iOS · Dark</div>
+        <div data-screen-label="Detail iPad iOS Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" platform="iOS" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Android · Light</div>
+        <div data-screen-label="Detail iPad Android Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" platform="Android" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Android · Dark</div>
+        <div data-screen-label="Detail iPad Android Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" platform="Android" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">Expired provisioning profile · Install and Share disabled</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Light</div>
+        <div data-screen-label="Detail Expired iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" platform="iOS" expired="{{ true }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Dark</div>
+        <div data-screen-label="Detail Expired iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" platform="iOS" expired="{{ true }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Light</div>
+        <div data-screen-label="Detail Expired iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" platform="iOS" expired="{{ true }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Share Application</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Opened from Share on Application Detail. Search the selected team, tap members to select them; selected members appear on top. Members who already have access are shown but can’t be selected.</div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Light</div>
+      <div data-screen-label="Share iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Light" platform="iOS" start-share="{{ true }}" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">iPhone · Dark</div>
+      <div data-screen-label="Share iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+        <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPhone" appearance="Dark" platform="Android" start-share="{{ true }}" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Light</div>
+      <div data-screen-label="Share iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Light" platform="iOS" start-share="{{ true }}" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">iPad · Dark</div>
+      <div data-screen-label="Share iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+        <dc-import name="AppDetailScreen" logo-style="{{ logoStyle }}" style="width:100%;height:100%" device="iPad" appearance="Dark" platform="Android" start-share="{{ true }}" hint-size="1180px,820px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="height:1px;background:rgba(0,0,0,0.1)"></div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Settings</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Profile, Free plan usage, Organization, Teams, Appearance, Privacy Policy, Terms and Conditions, and Sign Out.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="Settings iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Light" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="Settings iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Dark" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="Settings iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Light" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="Settings iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Dark" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:40px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Team Members</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Settings → Teams → tap a team. Sheet lists members in Admin and Users sections.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="Team Members iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Light" initial-view="teams" initial-team="{{ 0 }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="Team Members iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Dark" initial-view="teams" initial-team="{{ 0 }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="Team Members iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Light" initial-view="teams" initial-team="{{ 0 }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="Team Members iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Dark" initial-view="teams" initial-team="{{ 0 }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:40px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · About</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Settings → About ZhareHub. App icon, version and product description.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light</div>
+        <div data-screen-label="About iPhone Light" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Light" initial-view="about" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark</div>
+        <div data-screen-label="About iPhone Dark" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Dark" initial-view="about" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light</div>
+        <div data-screen-label="About iPad Light" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Light" initial-view="about" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark</div>
+        <div data-screen-label="About iPad Dark" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Dark" initial-view="about" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:40px">
+    <div style="font-size:22px;font-weight:700;color:#1a1a1a">ZhareHub · Send Feedback</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55)">Settings → Send Feedback. Pick a type, describe it, and optionally include device and user information.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPhone 17 Pro · Portrait · 402 × 874</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light · Info off</div>
+        <div data-screen-label="Feedback iPhone Light · Info off" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Light" initial-view="feedback" feedback-info="{{ false }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Light · Info on</div>
+        <div data-screen-label="Feedback iPhone Light · Info on" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Light" initial-view="feedback" feedback-info="{{ true }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:10px">Dark · Info on</div>
+        <div data-screen-label="Feedback iPhone Dark · Info on" style="width:402px;height:874px;border-radius:56px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 10px #1a1a1a;margin:10px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPhone" appearance="Dark" initial-view="feedback" feedback-info="{{ true }}" hint-size="402px,874px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a">iPad Air 11″ · Landscape · 1180 × 820</div>
+    <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Light · Info on</div>
+        <div data-screen-label="Feedback iPad Light · Info on" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Light" initial-view="feedback" feedback-info="{{ true }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;color:rgba(0,0,0,0.55);padding-left:12px">Dark · Info on</div>
+        <div data-screen-label="Feedback iPad Dark · Info on" style="width:1180px;height:820px;border-radius:24px;overflow:hidden;box-shadow:0 20px 76px rgba(0,0,0,0.2),0 0 0 12px #1a1a1a;margin:12px">
+          <dc-import name="SettingsScreen" style="width:100%;height:100%" device="iPad" appearance="Dark" initial-view="feedback" feedback-info="{{ true }}" hint-size="1180px,820px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;logoStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Filled&quot;,&quot;Stroke&quot;],&quot;default&quot;:&quot;Filled&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { logoStyle: this.props.logoStyle ?? 'Filled' };
+  }
+}
+</script>
+</body>
+</html>
